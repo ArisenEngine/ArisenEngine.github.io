@@ -2840,10 +2840,6 @@ body.page-about {
   letter-spacing: 0.08em;
 }
 
-.print-contact-card {
-  display: none;
-}
-
 .work-list {
   border-top: 1px solid var(--paper-line);
 }
@@ -4006,7 +4002,6 @@ body.page-about {
   .contact-band,
   .site-footer,
   .resume-side-note,
-  .wechat-card,
   .skip-link {
     display: none !important;
   }
@@ -4088,6 +4083,38 @@ body.page-about {
     text-decoration: underline;
     text-decoration-color: #aaa;
     text-underline-offset: 2pt;
+  }
+
+  .wechat-card {
+    display: grid;
+    grid-template-columns: 18mm minmax(0, 1fr);
+    gap: 4mm;
+    margin-top: 8pt;
+    padding: 0;
+    border: 0;
+    background: transparent;
+  }
+
+  .wechat-card:hover {
+    background: transparent;
+  }
+
+  .wechat-card img {
+    width: 18mm;
+    height: 18mm;
+    border: 1px solid #ccc;
+  }
+
+  .wechat-card span {
+    gap: 2pt;
+  }
+
+  .wechat-card strong {
+    font-size: 6pt;
+  }
+
+  .wechat-card small {
+    font-size: 7pt;
   }
 
   .focus-list {
@@ -4263,44 +4290,6 @@ body.page-about {
   .education-row p,
   .education-row > span {
     font-size: 7.5pt;
-  }
-
-  .print-contact-card {
-    display: grid;
-    grid-template-columns: 20mm minmax(0, 1fr);
-    align-items: center;
-    gap: 6mm;
-    max-width: 96mm;
-    margin-top: 12pt;
-    padding-top: 8pt;
-    border-top: 1px solid #999;
-    break-inside: avoid;
-  }
-
-  .print-contact-card img {
-    width: 20mm;
-    height: 20mm;
-    border: 1px solid #ccc;
-    background: #fff;
-  }
-
-  .print-contact-card div {
-    display: grid;
-    gap: 3pt;
-  }
-
-  .print-contact-card span {
-    font: 600 6.5pt/1.2 "Cascadia Code", Consolas, monospace;
-    letter-spacing: 0.1em;
-  }
-
-  .print-contact-card strong {
-    font-size: 9pt;
-  }
-
-  .print-contact-card small {
-    color: #666 !important;
-    font-size: 7pt;
   }
 
   .work-item {

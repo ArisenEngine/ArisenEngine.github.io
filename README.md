@@ -37,8 +37,7 @@ site repository.
 - The resume uses `王靖文 / Jingwen Wang`, the public GitHub email, and the public Zhihu and
   Bilibili profiles from the source resume. The private phone number and personal details from
   the PDF are intentionally not published.
-- The WeChat QR code is shown on the web resume and hidden from print output to keep the PDF at
-  two A4 pages.
+- The WeChat QR code appears both in the web resume contact block and in the PDF contact block.
 - Regenerate the downloadable PDF from `about.html` with the browser print stylesheet whenever
   resume content changes, then replace `assets/wang-jingwen-resume.pdf`.
 - `关于我` positions the candidate for rendering engine and engine architecture roles. The Tesla
