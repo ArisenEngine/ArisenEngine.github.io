@@ -92,7 +92,8 @@
           <span>03 / RENDER PATH</span>
           <span>04 / RUNTIME OWNERSHIP</span>
           <span>05 / VALIDATION</span>
-          <span>06 / ROADMAP</span>
+          <span>06 / ARCHITECTURE EVOLUTION</span>
+          <span>07 / ROADMAP</span>
         </div>
       </div>
     </section>
@@ -465,11 +466,84 @@ Arisen\Scripts\Windows\validate_runtime.bat
       </div>
     </section>
 
+    <section class="section section--evolution" id="evolution">
+      <div class="shell">
+        <div class="section-heading section-heading--split">
+          <div>
+            <p class="section-kicker reveal"><span>06</span> / 演进</p>
+            <h2 class="reveal">从初版 RHI<br>到<span class="accent-text">包化微内核。</span></h2>
+          </div>
+          <p class="section-intro reveal">
+            这里只记录改变系统边界的主线节点。接口细节、实验分支和提交依据，
+            会放到后续的技术文档中。
+          </p>
+        </div>
+
+        <div class="timeline timeline--evolution">
+          <article class="timeline-item reveal">
+            <div class="timeline-marker"><i></i></div>
+            <div class="timeline-meta"><span>2023.10 — 2025</span><span>FOUNDATION</span></div>
+            <h3>初版 RHI</h3>
+            <p>
+              公共接口放在 Core.Infra/RHI；Vulkan、DX12、OpenGL 作为独立后端 DLL，
+              由 RHILoader 动态加载。Vulkan 是主要开发路径。
+            </p>
+            <ul class="timeline-tags">
+              <li>Backend DLL</li><li>RHILoader</li><li>Vulkan</li>
+            </ul>
+          </article>
+
+          <article class="timeline-item reveal">
+            <div class="timeline-marker"><i></i></div>
+            <div class="timeline-meta"><span>2025.10 — 2026.02</span><span>RHI V2</span></div>
+            <h3>句柄化重写</h3>
+            <p>
+              移除 RHIFactory 和裸指针资源模型，改为 RHIHandle、资源注册表、设备队列、
+              提交票号与延迟回收，并通过 C ABI 接入 C#。
+            </p>
+            <ul class="timeline-tags">
+              <li>RHIHandle</li><li>Submit Ticket</li><li>C ABI</li>
+            </ul>
+          </article>
+
+          <article class="timeline-item reveal">
+            <div class="timeline-marker"><i></i></div>
+            <div class="timeline-meta"><span>2026.03</span><span>MICROKERNEL</span></div>
+            <h3>包化微内核</h3>
+            <p>
+              ArisenKernel 接管启动、包图和服务注册；原生模块迁入独立包，
+              ArisenBuildTool 负责解析依赖并生成工作区。
+            </p>
+            <ul class="timeline-tags">
+              <li>ArisenKernel</li><li>Package Graph</li><li>Build Tool</li>
+            </ul>
+          </article>
+
+          <article class="timeline-item timeline-item--active reveal">
+            <div class="timeline-marker"><i></i></div>
+            <div class="timeline-meta"><span>NOW</span><span>CURRENT</span></div>
+            <h3>当前架构</h3>
+            <p>
+              Vulkan RHI 作为可替换的 hybrid package 提供 IRHIBackend 与 IRHIDevice；
+              RenderGraph、编辑器和运行时通过服务合同协作。
+            </p>
+            <ul class="timeline-tags">
+              <li>IRHIBackend</li><li>RenderGraph</li><li>Package Boundary</li>
+            </ul>
+          </article>
+        </div>
+
+        <p class="roadmap-footnote reveal">
+          * 公开页保留主线架构变化；实验分支和提交级依据不在此展开。
+        </p>
+      </div>
+    </section>
+
     <section class="section section--roadmap" id="roadmap">
       <div class="shell">
         <div class="section-heading section-heading--split">
           <div>
-            <p class="section-kicker reveal"><span>06</span> / 路线图</p>
+            <p class="section-kicker reveal"><span>07</span> / 路线图</p>
             <h2 class="reveal">先把地基做对，<br>再让<span class="accent-text">世界变大。</span></h2>
           </div>
           <p class="section-intro reveal">
@@ -527,7 +601,7 @@ Arisen\Scripts\Windows\validate_runtime.bat
       <div class="shell">
         <div class="closing-panel reveal">
           <div class="closing-orbit" aria-hidden="true"></div>
-          <p class="section-kicker"><span>07</span> / 继续阅读</p>
+          <p class="section-kicker"><span>08</span> / 继续阅读</p>
           <h2>世界从边界开始，<br><span class="accent-text">也从人开始。</span></h2>
           <p>
             想了解这套引擎背后的设计者、技术方向和联系方式，请查看个人简历页。
