@@ -126,6 +126,10 @@
                   <a href="https://space.bilibili.com/1121734657" target="_blank" rel="noreferrer">技术视频与 Demo ↗</a>
                 </li>
               </ul>
+              <a class="wechat-card" href="assets/images/wechat-qr.png" target="_blank" rel="noreferrer" aria-label="打开王靖文的微信二维码">
+                <img src="assets/images/wechat-qr.png" alt="王靖文的微信二维码" width="132" height="132">
+                <span><strong>WECHAT / 微信</strong><small>扫码添加微信</small></span>
+              </a>
             </section>
 
             <section class="resume-side-section reveal">
@@ -187,7 +191,7 @@
                 <div>
                   <span>02</span>
                   <strong>渲染管线与并发</strong>
-                  <p>维护自定义 SRP，迁移天空、后效、GTAO 等 Pass，处理 SRP 线程同步与画质分级。</p>
+                  <p>维护自定义 SRP，推进管线全面三线程化，把发起、数据准备、提交与收尾放到 SRP 线程，并处理天空、后效、GTAO 等 Pass 的同步与画质分级。</p>
                 </div>
                 <div>
                   <span>03</span>
@@ -215,7 +219,7 @@
                 <ul class="experience-list">
                   <li>
                     <span>01</span>
-                    <p>维护大型开放世界项目的 Unity 引擎源码与自定义 SRP。天空、后效、地形与静态场景的数据准备迁移到 SRP 线程，适配 SceneView、CameraOverlay、Preview 与 FinalOpt 路径。</p>
+                    <p>维护大型开放世界项目的 Unity 引擎源码与自定义 SRP，推进渲染管线全面三线程化：管线发起、Pass 数据准备、提交与收尾都放到 SRP 线程执行，减少主线程阻塞，并适配 SceneView、CameraOverlay、Preview 等编辑器渲染路径。</p>
                   </li>
                   <li>
                     <span>02</span>

@@ -25,6 +25,7 @@ site repository.
 - `assets/css/site.css` — the shared visual system
 - `assets/js/site.js` — navigation, reveal animations, pointer glow, print action
 - `assets/images/arisen-mark.png` — public copy of the editor logo
+- `assets/images/wechat-qr.png` — cropped WeChat contact QR code for the resume page
 - `assets/images/og-cover.png` — 1200×630 social sharing card
 - `robots.txt` and `sitemap.xml` — crawler metadata for the public URL
 
@@ -35,6 +36,8 @@ site repository.
 - The resume uses `王靖文 / Jingwen Wang`, the public GitHub email, and the public Zhihu and
   Bilibili profiles from the source resume. The private phone number and personal details from
   the PDF are intentionally not published.
+- The WeChat QR code is shown on the web resume and hidden from print output to keep the PDF at
+  two A4 pages.
 - `关于我` positions the candidate for rendering engine and engine architecture roles. The Tesla
   JD was used as a technology reference, not as a fixed written target. Edit the summary,
   experience, and project sections directly in `about.html` when the application focus changes.

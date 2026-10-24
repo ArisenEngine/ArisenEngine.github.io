@@ -2454,6 +2454,49 @@ body.page-about {
   color: var(--accent-deep);
 }
 
+.wechat-card {
+  display: grid;
+  grid-template-columns: 132px minmax(0, 1fr);
+  align-items: center;
+  gap: 14px;
+  margin-top: 20px;
+  padding: 12px;
+  border: 1px solid var(--paper-line);
+  background: rgba(255, 255, 255, 0.36);
+  transition:
+    border-color 160ms ease,
+    background 160ms ease;
+}
+
+.wechat-card:hover {
+  border-color: var(--paper-line-strong);
+  background: rgba(255, 255, 255, 0.62);
+}
+
+.wechat-card img {
+  width: 132px;
+  height: 132px;
+  background: #fff;
+  image-rendering: auto;
+}
+
+.wechat-card span {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.wechat-card strong {
+  color: var(--paper-ink);
+  font: 600 8px/1.4 var(--font-mono);
+  letter-spacing: 0.12em;
+}
+
+.wechat-card small {
+  color: var(--paper-muted);
+  font-size: 12px;
+}
+
 .focus-list {
   display: flex;
   flex-wrap: wrap;
@@ -3920,6 +3963,7 @@ body.page-about {
   .contact-band,
   .site-footer,
   .resume-side-note,
+  .wechat-card,
   .skip-link {
     display: none !important;
   }
