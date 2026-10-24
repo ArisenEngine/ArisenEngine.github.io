@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#0a0a09">
+  <title>引擎技术文档 — Arisen Engine</title>
+  <meta name="description" content="Arisen Engine 技术文档入口，后续将整理架构、渲染、运行时、工具链和工程验证内容。">
+  <meta name="author" content="王靖文">
+  <link rel="canonical" href="https://arisenengine.github.io/documentation.html">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:title" content="引擎技术文档 — Arisen Engine">
+  <meta property="og:description" content="Arisen Engine 的架构、渲染、运行时、工具链与验证文档入口。">
+  <meta property="og:url" content="https://arisenengine.github.io/documentation.html">
+  <meta property="og:image" content="https://arisenengine.github.io/assets/images/og-cover.png">
+  <meta property="og:image:alt" content="Arisen Engine 技术文档">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/png" href="assets/images/arisen-mark.png">
+  <link rel="stylesheet" href="assets/css/site.css">
+  <script src="assets/js/site.js" defer></script>
+</head>
+<body class="page-docs">
+  <a class="skip-link" href="#main">跳到主要内容</a>
+
+  <header class="site-header" data-header>
+    <div class="shell header-inner">
+      <a class="brand" href="index.html" aria-label="Arisen Engine 首页">
+        <span class="brand-mark"><img src="assets/images/arisen-mark.png" alt="" width="44" height="44"></span>
+        <span class="brand-type"><span>ARISEN</span><span class="brand-sub">ENGINE</span></span>
+      </a>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-nav-toggle>
+        <span class="nav-toggle-label">菜单</span>
+        <span class="nav-toggle-lines" aria-hidden="true"><i></i><i></i></span>
+      </button>
+
+      <nav class="site-nav" id="site-nav" aria-label="主导航" data-nav>
+        <a href="index.html">首页</a>
+        <a href="engine.html">引擎</a>
+        <a href="engine.html#architecture">架构</a>
+        <a href="engine.html#roadmap">路线图</a>
+        <a href="documentation.html" aria-current="page">技术文档</a>
+        <a href="about.html">关于我</a>
+        <a class="nav-external" href="https://github.com/ArisenEngine" target="_blank" rel="noreferrer">
+          GitHub <span aria-hidden="true">↗</span>
+        </a>
+      </nav>
+
+      <span class="header-state" aria-label="文档状态：整理中">
+        <i aria-hidden="true"></i> DOCS
+      </span>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-hero page-hero--docs" data-glow>
+      <div class="shell">
+        <div class="page-hero-grid">
+          <div>
+            <p class="eyebrow reveal">
+              <span class="status-dot" aria-hidden="true"></span>
+              ENGINE DOCS <span class="eyebrow-sep">/</span> IN PREPARATION
+            </p>
+            <h1 class="reveal">引擎<span class="accent-text">技术文档。</span></h1>
+            <p class="page-hero-lede reveal">
+              这里将用来整理 Arisen Engine 的架构、渲染、运行时和工具链。
+              当前先建立文档入口，正文内容会在后续逐步补充。
+            </p>
+          </div>
+
+          <aside class="engine-fact-panel reveal" aria-label="文档状态">
+            <div class="fact-panel-head">
+              <span>DOCUMENTATION / STATUS</span>
+              <i aria-hidden="true"></i>
+            </div>
+            <dl>
+              <div><dt>状态</dt><dd>整理中</dd></div>
+              <div><dt>语言</dt><dd>中文</dd></div>
+              <div><dt>范围</dt><dd>架构 / 渲染 / 运行时</dd></div>
+              <div><dt>形式</dt><dd>技术文档</dd></div>
+              <div><dt>发布</dt><dd>后续更新</dd></div>
+            </dl>
+            <p>正文会按主题逐步发布。</p>
+          </aside>
+        </div>
+
+        <div class="page-hero-meta reveal">
+          <span>01 / ARCHITECTURE</span>
+          <span>02 / RENDERING</span>
+          <span>03 / RUNTIME</span>
+          <span>04 / TOOLING</span>
+          <span>05 / VALIDATION</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--docs-index">
+      <div class="shell">
+        <div class="section-heading section-heading--split">
+          <div>
+            <p class="section-kicker reveal"><span>01</span> / 文档结构</p>
+            <h2 class="reveal">先把目录留好，<br><span class="accent-text">正文随后补上。</span></h2>
+          </div>
+          <p class="section-intro reveal">
+            文档入口先按系统职责拆分。具体章节、示例与图示将在内容整理完成后发布。
+          </p>
+        </div>
+
+        <div class="principles-detailed">
+          <article class="detail-card reveal">
+            <span class="detail-number">01</span>
+            <h3>架构与启动</h3>
+            <p>工作区、包图、服务注册、子系统生命周期与启动流程。</p>
+            <span class="detail-tag">IN PREPARATION</span>
+          </article>
+          <article class="detail-card reveal">
+            <span class="detail-number">02</span>
+            <h3>渲染与 RHI</h3>
+            <p>RenderGraph、Vulkan 后端、资源生命周期、同步与呈现。</p>
+            <span class="detail-tag">IN PREPARATION</span>
+          </article>
+          <article class="detail-card reveal">
+            <span class="detail-number">03</span>
+            <h3>运行时与流送</h3>
+            <p>ECS、任务调度、世界单元、资源驻留与释放策略。</p>
+            <span class="detail-tag">IN PREPARATION</span>
+          </article>
+          <article class="detail-card reveal">
+            <span class="detail-number">04</span>
+            <h3>工具与验证</h3>
+            <p>构建生成、编辑器宿主、运行时检查和图形调试路径。</p>
+            <span class="detail-tag">IN PREPARATION</span>
+          </article>
+        </div>
+
+        <div class="docs-notice reveal">
+          <span>DOCS / 00</span>
+          <div>
+            <h2>正文内容正在整理。</h2>
+            <p>目前可以先去引擎页了解系统分层、渲染路径和当前路线图。</p>
+          </div>
+          <a class="button button--ghost" href="engine.html">先看引擎概览 <span class="button-arrow" aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-main">
+      <a class="brand brand--footer" href="index.html" aria-label="Arisen Engine 首页">
+        <span class="brand-mark"><img src="assets/images/arisen-mark.png" alt="" width="36" height="36"></span>
+        <span class="brand-type"><span>ARISEN</span><span class="brand-sub">ENGINE</span></span>
+      </a>
+      <p class="footer-statement">为长期演进而设计的实时引擎。<br>Built with intent, one invariant at a time.</p>
+      <div class="footer-links">
+        <a href="engine.html">引擎</a>
+        <a href="documentation.html">技术文档</a>
+        <a href="about.html">关于我</a>
+        <a href="https://github.com/ArisenEngine" target="_blank" rel="noreferrer">GitHub ↗</a>
+      </div>
+    </div>
+    <div class="shell footer-meta">
+      <span>© <span data-year>2026</span> Arisen Engine</span>
+      <span>ENGINE DOCUMENTATION / IN PREPARATION</span>
+      <span>ZH-CN</span>
+    </div>
+  </footer>
+</body>
+</html>

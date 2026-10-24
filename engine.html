@@ -1,0 +1,567 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#0a0a09">
+  <title>引擎 — Arisen Engine</title>
+  <meta name="description" content="了解 Arisen Engine 的设计原则、系统分层、RenderGraph 渲染路径、运行时所有权和当前路线图。">
+  <meta name="author" content="王靖文">
+  <link rel="canonical" href="https://arisenengine.github.io/engine.html">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:title" content="引擎 — Arisen Engine">
+  <meta property="og:description" content="包驱动微内核、RenderGraph、Vulkan RHI 与数据优先运行时。">
+  <meta property="og:url" content="https://arisenengine.github.io/engine.html">
+  <meta property="og:image" content="https://arisenengine.github.io/assets/images/og-cover.png">
+  <meta property="og:image:alt" content="Arisen Engine — 包驱动微内核与 Vulkan RenderGraph">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/png" href="assets/images/arisen-mark.png">
+  <link rel="stylesheet" href="assets/css/site.css">
+  <script src="assets/js/site.js" defer></script>
+</head>
+<body class="page-engine">
+  <a class="skip-link" href="#main">跳到主要内容</a>
+
+  <header class="site-header" data-header>
+    <div class="shell header-inner">
+      <a class="brand" href="index.html" aria-label="Arisen Engine 首页">
+        <span class="brand-mark"><img src="assets/images/arisen-mark.png" alt="" width="44" height="44"></span>
+        <span class="brand-type"><span>ARISEN</span><span class="brand-sub">ENGINE</span></span>
+      </a>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-nav-toggle>
+        <span class="nav-toggle-label">菜单</span>
+        <span class="nav-toggle-lines" aria-hidden="true"><i></i><i></i></span>
+      </button>
+
+      <nav class="site-nav" id="site-nav" aria-label="主导航" data-nav>
+        <a href="index.html">首页</a>
+        <a href="engine.html" aria-current="page">引擎</a>
+        <a href="#architecture">架构</a>
+        <a href="#roadmap">路线图</a>
+        <a href="documentation.html">技术文档</a>
+        <a href="about.html">关于我</a>
+        <a class="nav-external" href="https://github.com/ArisenEngine" target="_blank" rel="noreferrer">
+          GitHub <span aria-hidden="true">↗</span>
+        </a>
+      </nav>
+
+      <span class="header-state" aria-label="开发状态：开发中">
+        <i aria-hidden="true"></i> DEV
+      </span>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-hero page-hero--engine" data-glow>
+      <div class="shell">
+        <div class="page-hero-grid">
+          <div>
+            <p class="eyebrow reveal">
+              <span class="status-dot" aria-hidden="true"></span>
+              ENGINE <span class="eyebrow-sep">/</span> SYSTEM OVERVIEW
+            </p>
+            <h1 class="reveal">一套能被拆开<br><span class="accent-text">理解的实时引擎。</span></h1>
+            <p class="page-hero-lede reveal">
+              Arisen 不试图把所有能力固定在一个巨大内核里。它用包、服务、
+              图结构和明确的数据所有权，把引擎组织成一组可以独立推理的系统。
+            </p>
+          </div>
+
+          <aside class="engine-fact-panel reveal" aria-label="项目技术摘要">
+            <div class="fact-panel-head">
+              <span>ENGINE / FACT SHEET</span>
+              <i aria-hidden="true"></i>
+            </div>
+            <dl>
+              <div><dt>语言</dt><dd>C++23 / C#</dd></div>
+              <div><dt>图形</dt><dd>Vulkan</dd></div>
+              <div><dt>平台</dt><dd>Windows-first</dd></div>
+              <div><dt>构建</dt><dd>CMake + .NET</dd></div>
+              <div><dt>架构</dt><dd>Package microkernel</dd></div>
+            </dl>
+            <p>Early development / architecture actively evolving.</p>
+          </aside>
+        </div>
+
+        <div class="page-hero-meta reveal">
+          <span>01 / DESIGN PRINCIPLES</span>
+          <span>02 / SYSTEM LAYERS</span>
+          <span>03 / RENDER PATH</span>
+          <span>04 / RUNTIME OWNERSHIP</span>
+          <span>05 / VALIDATION</span>
+          <span>06 / ROADMAP</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--principles">
+      <div class="shell">
+        <div class="section-heading section-heading--split">
+          <div>
+            <p class="section-kicker reveal"><span>01</span> / 设计原则</p>
+            <h2 class="reveal">先定义边界，<br>再让系统<span class="accent-text">生长。</span></h2>
+          </div>
+          <p class="section-intro reveal">
+            这些原则直接约束包依赖、数据布局、错误暴露和工程取舍，
+            也决定了哪些捷径不能被接受。
+          </p>
+        </div>
+
+        <div class="principles-detailed">
+          <article class="detail-card reveal">
+            <span class="detail-number">01</span>
+            <h3>内核克制</h3>
+            <p>
+              Kernel 只负责启动、包加载、服务注册、子系统生命周期和主循环。
+              具体能力由包提供，产品组合由 workspace manifest 决定。
+            </p>
+            <span class="detail-tag">THIN SHELL</span>
+          </article>
+
+          <article class="detail-card reveal">
+            <span class="detail-number">02</span>
+            <h3>合同明确</h3>
+            <p>
+              包依赖、服务提供和版本约束都是显式的。跨包协作通过接口完成，
+              不在领域包之间复制具体实现，也不把服务注册表带进热循环。
+            </p>
+            <span class="detail-tag">EXPLICIT CONTRACTS</span>
+          </article>
+
+          <article class="detail-card reveal">
+            <span class="detail-number">03</span>
+            <h3>数据优先</h3>
+            <p>
+              热路径使用连续数据和批处理。避免托管分配、锁、逐实体接口调度，
+              也避免为了短期的开发便利破坏长期的内存行为。
+            </p>
+            <span class="detail-tag">ZERO-OVERHEAD PATHS</span>
+          </article>
+
+          <article class="detail-card reveal">
+            <span class="detail-number">04</span>
+            <h3>正确性可证明</h3>
+            <p>
+              生命周期、GPU 资源和跨线程状态必须有可观察的完成条件。
+              禁止用任意等待、吞掉异常或关闭验证来换取表面稳定。
+            </p>
+            <span class="detail-tag">STATE, NOT TIMING</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--system" id="architecture">
+      <div class="shell">
+        <div class="section-heading">
+          <p class="section-kicker reveal"><span>02</span> / 系统分层</p>
+          <h2 class="reveal">每一层都只回答<br><span class="accent-text">自己该回答的问题。</span></h2>
+          <p class="section-intro reveal">
+            从加载包图到提交绘制命令，责任沿着清晰的层次向下传递。
+            上层选择产品与内容，底层保证资源、同步和呈现。
+          </p>
+        </div>
+
+        <div class="system-map">
+          <div class="system-map-main">
+            <article class="system-layer reveal">
+              <span class="layer-index">05</span>
+              <div class="layer-main">
+                <div class="layer-title">
+                  <h3>Hosts</h3>
+                  <span>EDITOR · RUNTIME · LAUNCHER</span>
+                </div>
+                <p>
+                  Editor 使用编辑器宿主承载原生 UI 与虚拟表面；独立运行时通过 Win32
+                  创建并驱动主窗口；Launcher 管理项目元数据与启动。
+                </p>
+              </div>
+              <div class="layer-packages">
+                <span>com.arisen.editor</span>
+                <span>com.arisen.platform.desktop</span>
+              </div>
+            </article>
+
+            <article class="system-layer reveal">
+              <span class="layer-index">04</span>
+              <div class="layer-main">
+                <div class="layer-title">
+                  <h3>Application</h3>
+                  <span>GAMEPLAY · ASSETS · STREAMING</span>
+                </div>
+                <p>
+                  游戏逻辑和内容以包为单位组织。世界单元具备受控的 CPU 驻留过程，
+                  资源交接发生在帧边界，最终 GPU 释放由提交票号决定。
+                </p>
+              </div>
+              <div class="layer-packages">
+                <span>com.arisen.ecs</span>
+                <span>com.arisen.resources</span>
+                <span>game packages</span>
+              </div>
+            </article>
+
+            <article class="system-layer system-layer--accent reveal">
+              <span class="layer-index">03</span>
+              <div class="layer-main">
+                <div class="layer-title">
+                  <h3>RenderGraph</h3>
+                  <span>PASS DAG · PIPELINE · TASKGRAPH</span>
+                </div>
+                <p>
+                  Pass 声明输入和输出，图负责排序与资源生命周期。
+                  通用管线定义具体拓扑，CPU 侧构建与部分工作可以由任务图并行推进。
+                </p>
+              </div>
+              <div class="layer-packages">
+                <span>com.arisen.dag</span>
+                <span>com.arisen.rendering</span>
+                <span>com.arisen.generic-renderpipeline</span>
+              </div>
+            </article>
+
+            <article class="system-layer reveal">
+              <span class="layer-index">02</span>
+              <div class="layer-main">
+                <div class="layer-title">
+                  <h3>RHI</h3>
+                  <span>RESOURCES · SYNC · PRESENTATION</span>
+                </div>
+                <p>
+                  后端把渲染图翻译成 Vulkan 资源、管线、命令和同步。
+                  上层共享 RHI 合同，具体图形后端保留为可选择的产品组合。
+                </p>
+              </div>
+              <div class="layer-packages">
+                <span>com.arisen.rhi.vulkan.native</span>
+                <span>shared RHI interfaces</span>
+              </div>
+            </article>
+
+            <article class="system-layer system-layer--kernel reveal">
+              <span class="layer-index">01</span>
+              <div class="layer-main">
+                <div class="layer-title">
+                  <h3>Kernel</h3>
+                  <span>BOOT · PACKAGES · SERVICES · SUBSYSTEMS</span>
+                </div>
+                <p>
+                  解析工作区与配置，校验包约束和原生载荷，注册服务，
+                  再按照包 DAG 与子系统阶段启动当前产品。
+                </p>
+              </div>
+              <div class="layer-packages">
+                <span>ArisenKernel</span>
+                <span>ArisenBuildTool</span>
+              </div>
+            </article>
+          </div>
+
+          <aside class="system-aside">
+            <div class="aside-card reveal">
+              <span class="aside-label">BOOT ORDER</span>
+              <ol class="boot-order">
+                <li><span>01</span>解析 workspace / profile</li>
+                <li><span>02</span>校验包图与版本约束</li>
+                <li><span>03</span>注册服务与包入口</li>
+                <li><span>04</span>按阶段初始化子系统</li>
+                <li><span>05</span>交给 Host 或默认循环</li>
+              </ol>
+            </div>
+            <blockquote class="aside-quote reveal">
+              <p>“能力由包组合进产品。”</p>
+              <cite>PACKAGE LIFECYCLE</cite>
+            </blockquote>
+            <div class="aside-card aside-card--small reveal">
+              <span class="aside-label">OWNERSHIP</span>
+              <p>Engine shell stays thin.<br>Packages carry the weight.</p>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--render-path" id="rendering">
+      <div class="shell">
+        <div class="section-heading section-heading--split">
+          <div>
+            <p class="section-kicker reveal"><span>03</span> / 渲染路径</p>
+            <h2 class="reveal">把画面组织成<br>一张<span class="accent-text">可推理的图。</span></h2>
+          </div>
+          <p class="section-intro reveal">
+            RenderGraph 把“要画什么”和“如何提交”分开。Pass 描述依赖，
+            Pipeline 选择拓扑，RHI 负责把结果安全地送达 GPU。
+          </p>
+        </div>
+
+        <div class="render-console reveal">
+          <div class="console-bar">
+            <span class="console-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span>generic-renderpipeline / graph-preview</span>
+            <span>FRAME / 0001</span>
+          </div>
+          <div class="render-pipeline" aria-label="示例渲染拓扑">
+            <div class="render-node">
+              <span class="render-node-index">01</span>
+              <strong>Depth Prepass</strong>
+              <small>DEPTH</small>
+            </div>
+            <span class="render-connector" aria-hidden="true"></span>
+            <div class="render-node">
+              <span class="render-node-index">02</span>
+              <strong>Shadow Pass</strong>
+              <small>SHADOW</small>
+            </div>
+            <span class="render-connector" aria-hidden="true"></span>
+            <div class="render-node render-node--active">
+              <span class="render-node-index">03</span>
+              <strong>Opaque Pass</strong>
+              <small>COLOR · DEPTH</small>
+            </div>
+            <span class="render-connector" aria-hidden="true"></span>
+            <div class="render-node">
+              <span class="render-node-index">04</span>
+              <strong>Post Process</strong>
+              <small>COMPOSITE</small>
+            </div>
+            <span class="render-connector" aria-hidden="true"></span>
+            <div class="render-node">
+              <span class="render-node-index">05</span>
+              <strong>Present</strong>
+              <small>SURFACE</small>
+            </div>
+          </div>
+          <div class="console-foot">
+            <span>TOPOLOGY / CODE-OWNED</span>
+            <span>DEPENDENCIES / DECLARED</span>
+            <span>SUBMISSION / RHI</span>
+          </div>
+        </div>
+
+        <div class="render-facts">
+          <article class="render-fact reveal">
+            <span>01</span>
+            <h3>声明依赖</h3>
+            <p>每个 Pass 明确读写资源，图结构在编译与执行边界保持可检查。</p>
+          </article>
+          <article class="render-fact reveal">
+            <span>02</span>
+            <h3>控制资源</h3>
+            <p>资源生命周期由图统一管理，为屏障、剔除和复用留出正确位置。</p>
+          </article>
+          <article class="render-fact reveal">
+            <span>03</span>
+            <h3>并行准备</h3>
+            <p>不相互依赖的工作可以提交给 TaskGraph，CPU 准备不再串行等待。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--runtime" id="runtime">
+      <div class="shell runtime-layout">
+        <div class="runtime-copy">
+          <p class="section-kicker reveal"><span>04</span> / 运行时</p>
+          <h2 class="reveal">并发的前提，<br>是<span class="accent-text">所有权清楚。</span></h2>
+          <p class="section-intro reveal">
+            Arisen 把线程边界作为架构的一部分处理。
+            世界加载可以并行准备，但 ECS、UI、RHI 和命令录制各有明确归属。
+          </p>
+          <p class="runtime-note reveal">
+            Host 拥有帧节奏。主窗口最小化时，引擎线程停在窗口消息队列上，
+            恢复时在进入下一帧前重新对齐帧时钟。
+          </p>
+        </div>
+
+        <div class="ownership-grid">
+          <article class="ownership-card reveal">
+            <span class="ownership-tag">FRAME BOUNDARY</span>
+            <h3>主线程与宿主</h3>
+            <ul class="check-list">
+              <li><span>+</span> 拥有 UI 与主窗口生命周期</li>
+              <li><span>+</span> 在帧边界推进资源驻留</li>
+              <li><span>+</span> 决定提交与呈现时机</li>
+            </ul>
+          </article>
+          <article class="ownership-card reveal">
+            <span class="ownership-tag">WORLD WORKERS</span>
+            <h3>数据准备线程</h3>
+            <ul class="check-list check-list--mixed">
+              <li><span>+</span> 读取并验证资产载荷</li>
+              <li><span>+</span> 取得带代际校验的驻留租约</li>
+              <li><span>−</span> 不修改 ECS 或 UI</li>
+              <li><span>−</span> 不创建 RHI 资源或录制命令</li>
+            </ul>
+          </article>
+          <article class="ownership-card ownership-card--wide reveal">
+            <span class="ownership-tag">DEFERRED RELEASE</span>
+            <h3>释放跟随提交票号</h3>
+            <p>
+              GPU 资源不会因为 CPU 侧不再使用就立刻销毁。
+              释放队列绑定到明确的设备代际，等待最后一次相关提交完成后再回收。
+            </p>
+            <div class="ownership-diagram" aria-hidden="true">
+              <span>SUBMIT</span><i></i><span>TICKET</span><i></i><span>RETIRE</span><i></i><span>RELEASE</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--validation" id="validation">
+      <div class="shell validation-layout">
+        <div class="validation-intro">
+          <p class="section-kicker reveal"><span>05</span> / 验证</p>
+          <h2 class="reveal">稳定性最终落在<br><span class="accent-text">可复现的状态上。</span></h2>
+          <p class="section-intro reveal">
+            构建成功只是起点。包生命周期、运行时启动、GPU 资源释放和编辑器路径，
+            都需要可以在干净环境中重复验证。
+          </p>
+        </div>
+
+        <div class="validation-terminal reveal">
+          <div class="terminal-head">
+            <span>VALIDATION / FAST GATE</span>
+            <span class="terminal-lights" aria-hidden="true"><i></i><i></i><i></i></span>
+          </div>
+          <pre><code><span class="code-comment"># package + kernel tests</span>
+Arisen\Scripts\Windows\validate_fast.bat
+
+<span class="code-comment"># bounded runtime smoke</span>
+Arisen\Scripts\Windows\validate_runtime.bat
+  --no-pause --config Debug --smoke-mode scene --frames 1</code></pre>
+          <div class="terminal-result">
+            <span><i></i> CHECKS / STATE-BASED</span>
+            <span>NO ARBITRARY WAITS</span>
+          </div>
+        </div>
+
+        <div class="validation-list">
+          <div class="validation-row reveal">
+            <span>01</span>
+            <div>
+              <h3>包与工作区</h3>
+              <p>解析图、服务合同、版本约束和 profile 生成必须是确定性的。</p>
+            </div>
+          </div>
+          <div class="validation-row reveal">
+            <span>02</span>
+            <div>
+              <h3>运行时与 GPU</h3>
+              <p>启动、窗口、呈现和关闭路径必须留下可检查的日志与所有权状态。</p>
+            </div>
+          </div>
+          <div class="validation-row reveal">
+            <span>03</span>
+            <div>
+              <h3>编辑器与工具</h3>
+              <p>双视口、资源重建与 RenderDoc 路径需要在真实宿主中验证，单元测试覆盖不到这些生命周期。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--roadmap" id="roadmap">
+      <div class="shell">
+        <div class="section-heading section-heading--split">
+          <div>
+            <p class="section-kicker reveal"><span>06</span> / 路线图</p>
+            <h2 class="reveal">先把地基做对，<br>再让<span class="accent-text">世界变大。</span></h2>
+          </div>
+          <p class="section-intro reveal">
+            当前阶段先把内核、渲染、内容和工具链之间的边界稳定下来，暂不追求功能数量。
+          </p>
+        </div>
+
+        <div class="timeline">
+          <article class="timeline-item timeline-item--active reveal">
+            <div class="timeline-marker"><i></i></div>
+            <div class="timeline-meta"><span>NOW</span><span>基础系统</span></div>
+            <h3>可运行的引擎骨架</h3>
+            <p>
+              包图与启动、Vulkan 渲染、编辑器宿主、资源驻留、
+              世界/地形流送和构建生成路径已形成闭环。
+            </p>
+            <ul class="timeline-tags">
+              <li>Kernel</li><li>Vulkan</li><li>RenderGraph</li><li>Editor Host</li>
+            </ul>
+          </article>
+
+          <article class="timeline-item reveal">
+            <div class="timeline-marker"><i></i></div>
+            <div class="timeline-meta"><span>NEXT</span><span>工作流</span></div>
+            <h3>可重复的创作与验收</h3>
+            <p>
+              完善编辑器工作流、样本画廊、资产生产路径，以及运行时和 GPU
+              所有权的自动化验收。
+            </p>
+            <ul class="timeline-tags">
+              <li>Authoring</li><li>Samples</li><li>Validation</li>
+            </ul>
+          </article>
+
+          <article class="timeline-item reveal">
+            <div class="timeline-marker"><i></i></div>
+            <div class="timeline-meta"><span>LATER</span><span>扩展</span></div>
+            <h3>更强的生产能力</h3>
+            <p>
+              扩展内容工具与渲染后端，让产品可以在不撕裂共享 RHI 合同的前提下持续演进。
+            </p>
+            <ul class="timeline-tags">
+              <li>Content Tools</li><li>Backends</li><li>Scale</li>
+            </ul>
+          </article>
+        </div>
+
+        <p class="roadmap-footnote reveal">
+          * 路线图会随验证结果调整。这里展示工程方向，不构成发布日期承诺。
+        </p>
+      </div>
+    </section>
+
+    <section class="section section--closing">
+      <div class="shell">
+        <div class="closing-panel reveal">
+          <div class="closing-orbit" aria-hidden="true"></div>
+          <p class="section-kicker"><span>07</span> / 继续阅读</p>
+          <h2>世界从边界开始，<br><span class="accent-text">也从人开始。</span></h2>
+          <p>
+            想了解这套引擎背后的设计者、技术方向和联系方式，请查看个人简历页。
+          </p>
+          <div class="closing-actions">
+            <a class="button button--primary" href="about.html">
+              关于我 <span class="button-arrow" aria-hidden="true">→</span>
+            </a>
+            <a class="button button--ghost" href="index.html">返回首页</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-main">
+      <a class="brand brand--footer" href="index.html" aria-label="Arisen Engine 首页">
+        <span class="brand-mark"><img src="assets/images/arisen-mark.png" alt="" width="36" height="36"></span>
+        <span class="brand-type"><span>ARISEN</span><span class="brand-sub">ENGINE</span></span>
+      </a>
+      <p class="footer-statement">为长期演进而设计的实时引擎。<br>Built with intent, one invariant at a time.</p>
+      <div class="footer-links">
+        <a href="engine.html">引擎</a>
+        <a href="documentation.html">技术文档</a>
+        <a href="about.html">关于我</a>
+        <a href="https://github.com/ArisenEngine" target="_blank" rel="noreferrer">GitHub ↗</a>
+      </div>
+    </div>
+    <div class="shell footer-meta">
+      <span>© <span data-year>2026</span> Arisen Engine</span>
+      <span>SOURCE / PRIVATE DURING DEVELOPMENT</span>
+      <span>ZH-CN</span>
+    </div>
+  </footer>
+</body>
+</html>
