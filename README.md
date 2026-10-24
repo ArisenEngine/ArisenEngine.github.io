@@ -35,9 +35,9 @@ site repository.
 - The resume uses `王靖文 / Jingwen Wang`, the public GitHub email, and the public Zhihu and
   Bilibili profiles from the source resume. The private phone number and personal details from
   the PDF are intentionally not published.
-- `关于我` currently targets automotive interaction / real-time rendering roles. Edit the
-  summary, experience, and project sections directly in `about.html` when the application focus
-  changes.
+- `关于我` positions the candidate for rendering engine and engine architecture roles. The Tesla
+  JD was used as a technology reference, not as a fixed written target. Edit the summary,
+  experience, and project sections directly in `about.html` when the application focus changes.
 - Employment end dates around the move from 三七互娱 to 无端 were reconstructed from the available
   commit history; confirm them before sending the resume.
 - Linux, Metal, English fluency, patents, and publications are deliberately not claimed because the
