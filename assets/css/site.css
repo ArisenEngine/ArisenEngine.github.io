@@ -2840,6 +2840,10 @@ body.page-about {
   letter-spacing: 0.08em;
 }
 
+.print-contact-card {
+  display: none;
+}
+
 .work-list {
   border-top: 1px solid var(--paper-line);
 }
@@ -3941,6 +3945,45 @@ body.page-about {
   @page {
     size: A4;
     margin: 10mm 12mm;
+
+    @top-left {
+      color: #666;
+      content: "王靖文  ·  实时渲染 / 引擎架构";
+      font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+      font-size: 7pt;
+    }
+
+    @top-right {
+      color: #888;
+      content: "JINGWEN WANG  /  RESUME 2026";
+      font-family: "Cascadia Code", Consolas, monospace;
+      font-size: 6.5pt;
+      letter-spacing: 0.08em;
+    }
+
+    @bottom-left {
+      color: #888;
+      content: "DreameatingCat@gmail.com";
+      font-family: "Cascadia Code", Consolas, monospace;
+      font-size: 6.5pt;
+    }
+
+    @bottom-right {
+      color: #888;
+      content: "PAGE " counter(page) " / " counter(pages);
+      font-family: "Cascadia Code", Consolas, monospace;
+      font-size: 6.5pt;
+    }
+  }
+
+  @page:first {
+    @top-left {
+      content: "";
+    }
+
+    @top-right {
+      content: "";
+    }
   }
 
   *,
@@ -4042,6 +4085,9 @@ body.page-about {
     display: block;
     margin-top: 1pt;
     font-size: 7.5pt;
+    text-decoration: underline;
+    text-decoration-color: #aaa;
+    text-underline-offset: 2pt;
   }
 
   .focus-list {
@@ -4217,6 +4263,44 @@ body.page-about {
   .education-row p,
   .education-row > span {
     font-size: 7.5pt;
+  }
+
+  .print-contact-card {
+    display: grid;
+    grid-template-columns: 20mm minmax(0, 1fr);
+    align-items: center;
+    gap: 6mm;
+    max-width: 96mm;
+    margin-top: 12pt;
+    padding-top: 8pt;
+    border-top: 1px solid #999;
+    break-inside: avoid;
+  }
+
+  .print-contact-card img {
+    width: 20mm;
+    height: 20mm;
+    border: 1px solid #ccc;
+    background: #fff;
+  }
+
+  .print-contact-card div {
+    display: grid;
+    gap: 3pt;
+  }
+
+  .print-contact-card span {
+    font: 600 6.5pt/1.2 "Cascadia Code", Consolas, monospace;
+    letter-spacing: 0.1em;
+  }
+
+  .print-contact-card strong {
+    font-size: 9pt;
+  }
+
+  .print-contact-card small {
+    color: #666 !important;
+    font-size: 7pt;
   }
 
   .work-item {
