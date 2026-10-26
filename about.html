@@ -66,10 +66,10 @@
             <h1 class="reveal">王靖文<span class="accent-text">.</span></h1>
             <p class="resume-role reveal">实时渲染 <span>/</span> 引擎源码 <span>/</span> 跨平台图形</p>
             <p class="resume-intro reveal">
-              十年游戏和图形开发经验，最近五年主要做 Unity 渲染与引擎源码定制。
-              做过 PC、Android、iOS 和 OpenHarmony 的商业项目，参与渲染管线、GPU 资源同步、
-              性能优化与线上故障定位。希望继续做渲染引擎与底层架构，把实时图形和跨平台经验
-              用到更复杂的产品里。
+              十年游戏和图形开发经验，最近五年主要做 <strong>Unity 渲染</strong> 与
+              <strong>引擎源码定制</strong>。做过 PC、Android、iOS 和 OpenHarmony 的商业项目，
+              参与渲染管线、<strong>GPU 资源同步</strong>、性能优化与线上故障定位。
+              希望继续做渲染引擎与底层架构，把实时图形和跨平台经验用到更复杂的产品里。
             </p>
             <div class="resume-actions reveal">
               <a class="button button--ink" href="assets/wang-jingwen-resume.pdf" download="王靖文-实时渲染-引擎架构.pdf" type="application/pdf">
@@ -171,7 +171,7 @@
               </div>
               <div class="profile-copy">
                 <p class="profile-lead">
-                  从游戏效果、渲染管线，到 Unity Runtime 的源码修改。
+                  从游戏效果、渲染管线，到 <strong>Unity Runtime</strong> 的源码修改。
                   我的工作主要围绕实时画面、性能和多平台稳定性展开。
                 </p>
                 <p>
@@ -186,12 +186,12 @@
                 <div>
                   <span>01</span>
                   <strong>引擎底层</strong>
-                  <p>在 Unity Runtime 中实现 GPU MeshCombine、SRP Threaded 抓帧和 Vulkan 视频资源路径。</p>
+                    <p>在 <strong>Unity Runtime</strong> 中实现 <strong>GPU MeshCombine</strong>、SRP Threaded 抓帧和 Vulkan 视频资源路径。</p>
                 </div>
                 <div>
                   <span>02</span>
                   <strong>渲染管线与并发</strong>
-                  <p>维护自定义 SRP，推进管线全面三线程化，把发起、数据准备、提交与收尾放到 SRP 线程，并处理天空、后效、GTAO 等 Pass 的同步与画质分级。</p>
+                    <p>维护自定义 SRP，推进管线<strong>全面三线程化</strong>，把发起、数据准备、提交与收尾放到 SRP 线程，并处理天空、后效、GTAO 等 Pass 的同步与画质分级。</p>
                 </div>
                 <div>
                   <span>03</span>
@@ -218,11 +218,11 @@
                 <ul class="experience-list">
                   <li>
                     <span>01</span>
-                    <p>用 C++23、Vulkan 和 C# 搭建包驱动微内核、ECS、TaskGraph、RenderGraph 与 Vulkan RHI。</p>
+                    <p>用 <strong>C++23</strong>、Vulkan 和 C# 搭建包驱动微内核、ECS、TaskGraph、RenderGraph 与 <strong>Vulkan RHI</strong>。</p>
                   </li>
                   <li>
                     <span>02</span>
-                    <p>实现资源提交、呈现和按提交票号延迟释放，在 Avalonia 中承载编辑器与双视口，并维护独立运行时与编辑器两条渲染路径。</p>
+                    <p>实现资源提交、呈现和按<strong>提交票号</strong>延迟释放，在 Avalonia 中承载编辑器与双视口，并维护独立运行时与编辑器两条渲染路径。</p>
                   </li>
                   <li>
                     <span>03</span>
@@ -247,26 +247,26 @@
                 <div class="experience-head">
                   <div>
                     <h3>无端科技</h3>
-                    <p>引擎 / 图形开发</p>
+                    <p>引擎 / 图形开发 · 项目 <strong>《失控进化》</strong></p>
                   </div>
                   <span class="experience-time">2024.11 — 至今</span>
                 </div>
                 <ul class="experience-list">
                   <li>
                     <span>01</span>
-                    <p>维护大型开放世界项目的 Unity 引擎源码与自定义 SRP，推进渲染管线全面三线程化：管线发起、Pass 数据准备、提交与收尾都放到 SRP 线程执行，减少主线程阻塞，并适配 SceneView、CameraOverlay、Preview 等编辑器渲染路径。</p>
+                    <p>维护大型开放世界项目的 Unity 引擎源码与自定义 SRP，推进渲染管线<strong>全面三线程化</strong>：管线发起、Pass 数据准备、提交与收尾都放到 <strong>SRP 线程</strong>执行，减少主线程阻塞，并适配 SceneView、CameraOverlay、Preview 等编辑器渲染路径。</p>
                   </li>
                   <li>
                     <span>02</span>
-                    <p>为 Frame Debugger 增加 SRP Threaded 抓帧能力，处理临时 RT、Native RenderPass、后效重绘和远程调试数据；在 Unity Runtime 中实现 GPU MeshCombine，补齐 compute shader、资源回收与 Android 适配。</p>
+                    <p>为 <strong>Frame Debugger</strong> 增加 SRP Threaded 抓帧能力，处理临时 RT、Native RenderPass、后效重绘和远程调试数据；在 Unity Runtime 中实现 <strong>GPU MeshCombine</strong>，补齐 compute shader、资源回收与 Android 适配。</p>
                   </li>
                   <li>
                     <span>03</span>
-                    <p>打通 OpenHarmony 视频播放的 Vulkan CPU/Native Buffer 路径，处理非标准尺寸、旋转镜像、VkFence 与资源生命周期问题；参与鸿蒙超分和画质切换接入。</p>
+                    <p>打通 <strong>OpenHarmony</strong> 视频播放的 <strong>Vulkan CPU/Native Buffer</strong> 路径，处理非标准尺寸、旋转镜像、VkFence 与资源生命周期问题；参与鸿蒙超分和画质切换接入。</p>
                   </li>
                   <li>
                     <span>04</span>
-                    <p>覆盖 Windows/Vulkan、D3D12、GLES 与 Android/iOS/OpenHarmony/macOS Editor 构建；定位黑屏、闪烁、花屏和崩溃问题，配合策划、美术、QA 与平台团队完成版本交付。</p>
+                    <p>覆盖 <strong>Windows/Vulkan</strong>、D3D12、GLES 与 Android/iOS/OpenHarmony/macOS Editor 构建；定位黑屏、闪烁、花屏和崩溃问题，配合策划、美术、QA 与平台团队完成版本交付。</p>
                   </li>
                 </ul>
               </article>
@@ -275,18 +275,18 @@
                 <div class="experience-head">
                   <div>
                     <h3>三七互娱</h3>
-                    <p>渲染工程师（Unity）</p>
+                    <p>渲染工程师（Unity） · 项目 <strong>《斗罗大陆：猎魂世界》</strong></p>
                   </div>
                   <span class="experience-time">2024.02 — 2024.10</span>
                 </div>
                 <ul class="experience-list">
                   <li>
                     <span>01</span>
-                    <p>负责开放世界 MMORPG 的水体交互、角色自阴影与玉石材质：用波动方程实现水面交互，基于自适应投射包围盒和 ShadowAtlas 完成逐角色投影。</p>
+                    <p>负责开放世界 MMORPG 的水体交互、角色自阴影与玉石材质：用<strong>波动方程</strong>实现水面交互，基于自适应投射包围盒和 <strong>ShadowAtlas</strong> 完成逐角色投影。</p>
                   </li>
                   <li>
                     <span>02</span>
-                    <p>实现预积分 SSS 与 Wrapped Lighting；使用 Mali Offline Compiler 优化 Shader 分支、精度和指令数。</p>
+                    <p>实现预积分 SSS 与 Wrapped Lighting；使用 <strong>Mali Offline Compiler</strong> 优化 Shader 分支、精度和指令数。</p>
                   </li>
                   <li>
                     <span>03</span>
@@ -299,18 +299,18 @@
                 <div class="experience-head">
                   <div>
                     <h3>DeNA</h3>
-                    <p>图形工程师（Unity）</p>
+                    <p>图形工程师（Unity） · 项目 <strong>《宿命回响》</strong></p>
                   </div>
                   <span class="experience-time">2021.12 — 2023.12</span>
                 </div>
                 <ul class="experience-list">
                   <li>
                     <span>01</span>
-                    <p>基于 Unity Core RP 与 RenderGraph 独立完成可编程渲染管线，使用 GraphView 开发节点式编辑器，用数据描述 Pass 和资源。</p>
+                    <p>基于 Unity Core RP 与 <strong>RenderGraph</strong> 独立完成可编程渲染管线，使用 <strong>GraphView</strong> 开发节点式编辑器，用数据描述 Pass 和资源。</p>
                   </li>
                   <li>
                     <span>02</span>
-                    <p>修改 URP，实现 UI 渲染分辨率分离、反射相机和 RenderFeature；完成 G 波水体、玻璃折射、预烘焙体积云、SDF 特效与 UI 模糊。</p>
+                    <p>修改 <strong>URP</strong>，实现 UI 渲染分辨率分离、反射相机和 RenderFeature；完成 G 波水体、玻璃折射、预烘焙体积云、SDF 特效与 UI 模糊。</p>
                   </li>
                   <li>
                     <span>03</span>
@@ -323,11 +323,11 @@
                 <div class="experience-head">
                   <div>
                     <h3>Celer Network</h3>
-                    <p>CocosCreator 主程</p>
+                    <p>CocosCreator 主程 · 项目 <strong>《CelerX》</strong></p>
                   </div>
                   <span class="experience-time">2019.06 — 2021.11</span>
                 </div>
-                <p class="experience-summary">负责小游戏客户端框架、构建管线和全部小游戏开发，维护发版流程。</p>
+                <p class="experience-summary">负责 <strong>CocosCreator</strong> 小游戏客户端框架、构建管线和全部小游戏开发，维护发版流程。</p>
               </article>
 
               <div class="early-history">

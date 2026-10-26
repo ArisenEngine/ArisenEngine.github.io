@@ -2664,11 +2664,16 @@ body.page-about {
   font: 500 8px/1 var(--font-mono);
 }
 
-.profile-highlights strong {
+.profile-highlights > div > strong {
   display: block;
   margin-top: 25px;
   font-family: var(--font-display);
   font-size: 1.15rem;
+  font-weight: 600;
+}
+
+.profile-highlights p strong {
+  color: var(--paper-ink);
   font-weight: 600;
 }
 
@@ -2751,6 +2756,15 @@ body.page-about {
   color: var(--paper-muted);
   font-size: 12.5px;
   line-height: 1.8;
+}
+
+.resume-intro strong,
+.profile-copy strong,
+.experience-head p strong,
+.experience-list p strong,
+.experience-summary strong {
+  color: var(--paper-ink);
+  font-weight: 600;
 }
 
 .early-history {
@@ -4217,9 +4231,14 @@ body.page-about {
     padding: 6pt;
   }
 
-  .profile-highlights strong {
+  .profile-highlights > div > strong {
     margin-top: 6pt;
     font-size: 9pt;
+  }
+
+  .profile-highlights p strong {
+    color: #111 !important;
+    font-weight: 700;
   }
 
   .profile-highlights p {
@@ -4357,5 +4376,207 @@ body.page-about {
 
   a {
     text-decoration: none;
+  }
+
+  /* PDF reading hierarchy */
+  html,
+  body {
+    line-height: 1.45;
+  }
+
+  .resume-intro strong,
+  .profile-copy strong,
+  .experience-summary strong,
+  .experience-list p strong,
+  .project-feature strong {
+    color: #111 !important;
+    font-weight: 700;
+  }
+
+  .resume-sidebar {
+    grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+    gap: 0;
+    padding: 0;
+    margin-bottom: 11pt;
+    border: 1px solid #d6d2c8;
+    background: #f7f5ef !important;
+  }
+
+  .resume-sidebar > .resume-side-section {
+    padding: 8pt 10pt;
+    border-top: 0;
+  }
+
+  .resume-sidebar > .resume-side-section:nth-child(2) {
+    display: none !important;
+  }
+
+  .resume-sidebar > .resume-side-section:nth-child(3) {
+    border-left: 1px solid #d6d2c8;
+    background: #fbfaf6 !important;
+  }
+
+  .resume-label {
+    color: #6f6b62 !important;
+    font-weight: 700;
+  }
+
+  .contact-list {
+    margin-top: 4pt;
+  }
+
+  .contact-list li {
+    padding: 3pt 0;
+  }
+
+  .contact-list a {
+    margin-top: 1pt;
+    color: #222 !important;
+    font-size: 7.4pt;
+    text-decoration: none;
+  }
+
+  .wechat-card {
+    grid-template-columns: 16mm minmax(0, 1fr);
+    gap: 3mm;
+    margin-top: 7pt;
+  }
+
+  .wechat-card img {
+    width: 16mm;
+    height: 16mm;
+  }
+
+  .wechat-card strong {
+    font-size: 6pt;
+  }
+
+  .wechat-card small {
+    color: #555 !important;
+    font-size: 7pt;
+  }
+
+  .skill-list {
+    column-gap: 9pt;
+    margin-top: 4pt;
+  }
+
+  .skill-list div {
+    padding: 3pt 0;
+    border-top: 1px solid #e2ded4;
+  }
+
+  .skill-list dt {
+    color: #777 !important;
+    font-size: 6.2pt;
+    font-weight: 700;
+  }
+
+  .skill-list dd {
+    color: #222 !important;
+    font-size: 7.1pt;
+    line-height: 1.45;
+  }
+
+  .resume-section-head {
+    padding: 5pt 7pt;
+    border: 0 !important;
+    border-left: 2.4pt solid #111 !important;
+    border-bottom: 1px solid #c9c4b9 !important;
+    background: #f2f0e9 !important;
+  }
+
+  .resume-section-head > span {
+    color: #7b776d !important;
+  }
+
+  .resume-section-head h2 {
+    font-size: 14.5pt;
+  }
+
+  .resume-section-head i {
+    color: #858177 !important;
+  }
+
+  .profile-highlights {
+    margin-top: 8pt;
+    border-color: #d6d2c8 !important;
+    background: #e9e5db !important;
+  }
+
+  .profile-highlights > div {
+    padding: 7pt;
+    background: #fbfaf6 !important;
+  }
+
+  .profile-highlights p {
+    line-height: 1.55;
+  }
+
+  .experience-item + .experience-item {
+    border-top-color: #cfcabf !important;
+  }
+
+  .experience-head h3 {
+    font-size: 11pt;
+  }
+
+  .experience-head p {
+    color: #444 !important;
+    font-size: 7.7pt;
+    line-height: 1.5;
+  }
+
+  .experience-head p strong {
+    color: #111 !important;
+    font-weight: 700;
+  }
+
+  .experience-time {
+    color: #666 !important;
+  }
+
+  .experience-list {
+    margin-top: 6pt;
+  }
+
+  .experience-list li {
+    grid-template-columns: 8pt minmax(0, 1fr);
+    gap: 5pt;
+    padding: 4pt 0;
+    border-bottom-color: #e0dcd3 !important;
+  }
+
+  .experience-list li > span {
+    align-self: start;
+    color: #111 !important;
+    font-size: 0;
+    line-height: 1;
+  }
+
+  .experience-list li > span::before {
+    display: block;
+    color: #111;
+    content: "•";
+    font-family: var(--font-sans);
+    font-size: 9.5pt;
+    font-weight: 700;
+    line-height: 1.35;
+  }
+
+  .experience-list p {
+    color: #333 !important;
+    font-size: 8pt;
+    line-height: 1.55;
+  }
+
+  .project-feature-head p {
+    color: #555 !important;
+    font-size: 7.2pt;
+  }
+
+  .project-links a {
+    border-bottom-color: #aaa !important;
+    color: #333 !important;
   }
 }
