@@ -19,7 +19,7 @@ site repository.
 
 - `index.html` — homepage and engine positioning
 - `engine.html` — design principles, system layers, rendering, runtime, validation,
-  architecture evolution, roadmap
+  AI/automation boundaries, architecture evolution, roadmap
 - `documentation.html` — technical documentation index and empty-state framework
 - `about.html` — tailored Chinese resume page with a print/PDF entry point
 - `404.html` — self-contained not-found page

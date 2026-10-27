@@ -6,13 +6,13 @@
   <meta name="color-scheme" content="dark">
   <meta name="theme-color" content="#0a0a09">
   <title>引擎 — Arisen Engine</title>
-  <meta name="description" content="了解 Arisen Engine 的设计原则、系统分层、RenderGraph 渲染路径、运行时所有权和当前路线图。">
+  <meta name="description" content="了解 Arisen Engine 的设计原则、系统分层、RenderGraph 渲染路径、运行时所有权、AI/自动化边界和当前路线图。">
   <meta name="author" content="王靖文">
   <link rel="canonical" href="https://arisenengine.github.io/engine.html">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="zh_CN">
   <meta property="og:title" content="引擎 — Arisen Engine">
-  <meta property="og:description" content="包驱动微内核、RenderGraph、Vulkan RHI 与数据优先运行时。">
+  <meta property="og:description" content="包驱动微内核、RenderGraph、Vulkan RHI，以及可为 AI 和自动化工具验证的工程结构。">
   <meta property="og:url" content="https://arisenengine.github.io/engine.html">
   <meta property="og:image" content="https://arisenengine.github.io/assets/images/og-cover.png">
   <meta property="og:image:alt" content="Arisen Engine — 包驱动微内核与 Vulkan RenderGraph">
@@ -92,8 +92,9 @@
           <span>03 / RENDER PATH</span>
           <span>04 / RUNTIME OWNERSHIP</span>
           <span>05 / VALIDATION</span>
-          <span>06 / ARCHITECTURE EVOLUTION</span>
-          <span>07 / ROADMAP</span>
+          <span>06 / AI &amp; AUTOMATION</span>
+          <span>07 / ARCHITECTURE EVOLUTION</span>
+          <span>08 / ROADMAP</span>
         </div>
       </div>
     </section>
@@ -466,11 +467,69 @@ Arisen\Scripts\Windows\validate_runtime.bat
       </div>
     </section>
 
+    <section class="section section--ai" id="ai">
+      <div class="shell">
+        <div class="section-heading section-heading--split">
+          <div>
+            <p class="section-kicker reveal"><span>06</span> / AI 与自动化</p>
+            <h2 class="reveal">AI 能读懂，<br>也能<span class="accent-text">验证改动。</span></h2>
+          </div>
+          <p class="section-intro reveal">
+            Arisen 的 AI 友好来自工程结构：元数据可读、边界清楚、构建可重复、结果可验证。
+            它面向自动化工具和代码 Agent，不依赖某个模型的接入。
+          </p>
+        </div>
+
+        <div class="principles-detailed">
+          <article class="detail-card reveal">
+            <span class="detail-number">01</span>
+            <h3>包图可读取</h3>
+            <p>
+              manifest.json 与 package.json 声明依赖、服务、子系统和原生载荷。
+              Agent 可以先从包图和元数据定位范围，不需要一开始就读完整棵源码树。
+            </p>
+            <span class="detail-tag">MACHINE-READABLE</span>
+          </article>
+          <article class="detail-card reveal">
+            <span class="detail-number">02</span>
+            <h3>修改面可隔离</h3>
+            <p>
+              包依赖组成 DAG，跨包协作通过服务合同完成。每个包可以单独构建、测试和替换，
+              自动修改的影响范围能被明确收住。
+            </p>
+            <span class="detail-tag">PACKAGE BOUNDARY</span>
+          </article>
+          <article class="detail-card reveal">
+            <span class="detail-number">03</span>
+            <h3>构建过程可重复</h3>
+            <p>
+              ArisenBuildTool 解析工作区与 profile，生成解决方案、CMake 和运行时清单。
+              同一份 manifest 产生稳定的工程结构，生成命令可以重复执行。
+            </p>
+            <span class="detail-tag">REPRODUCIBLE BUILD</span>
+          </article>
+          <article class="detail-card reveal">
+            <span class="detail-number">04</span>
+            <h3>结果可验证</h3>
+            <p>
+              包图、服务合同、原生载荷和运行时所有权都有独立门禁。
+              验证依据状态和完成条件，而不是等待、轮询间隔或重试次数。
+            </p>
+            <span class="detail-tag">STATE-BASED GATES</span>
+          </article>
+        </div>
+
+        <p class="roadmap-footnote reveal">
+          * AI 友好指工程结构可被自动化工具稳定理解和验证；生成代码仍要通过同一套合同和门禁。
+        </p>
+      </div>
+    </section>
+
     <section class="section section--evolution" id="evolution">
       <div class="shell">
         <div class="section-heading section-heading--split">
           <div>
-            <p class="section-kicker reveal"><span>06</span> / 演进</p>
+            <p class="section-kicker reveal"><span>07</span> / 演进</p>
             <h2 class="reveal">从初版 RHI<br>到<span class="accent-text">包化微内核。</span></h2>
           </div>
           <p class="section-intro reveal">
@@ -543,7 +602,7 @@ Arisen\Scripts\Windows\validate_runtime.bat
       <div class="shell">
         <div class="section-heading section-heading--split">
           <div>
-            <p class="section-kicker reveal"><span>07</span> / 路线图</p>
+            <p class="section-kicker reveal"><span>08</span> / 路线图</p>
             <h2 class="reveal">先把地基做对，<br>再让<span class="accent-text">世界变大。</span></h2>
           </div>
           <p class="section-intro reveal">
@@ -601,7 +660,7 @@ Arisen\Scripts\Windows\validate_runtime.bat
       <div class="shell">
         <div class="closing-panel reveal">
           <div class="closing-orbit" aria-hidden="true"></div>
-          <p class="section-kicker"><span>08</span> / 继续阅读</p>
+          <p class="section-kicker"><span>09</span> / 继续阅读</p>
           <h2>世界从边界开始，<br><span class="accent-text">也从人开始。</span></h2>
           <p>
             想了解这套引擎背后的设计者、技术方向和联系方式，请查看个人简历页。
