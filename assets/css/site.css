@@ -1258,16 +1258,22 @@ ol {
   box-shadow: 0 0 18px var(--accent);
 }
 
-.about-teaser-mark span {
-  color: var(--text);
-  font-family: var(--font-display);
-  font-size: clamp(6rem, 12vw, 10rem);
-  font-weight: 600;
-  line-height: 1;
+.about-teaser-mark img {
+  display: block;
+  width: 76%;
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 1px var(--line-strong),
+    0 24px 60px rgba(0, 0, 0, 0.32);
+  filter: saturate(0.92) contrast(1.04);
 }
 
 .about-teaser-mark i {
   position: absolute;
+  z-index: 1;
   bottom: 3%;
   padding: 6px 10px;
   background: var(--ink);
@@ -2389,12 +2395,16 @@ body.page-about {
   padding: 24px 0;
 }
 
-.resume-monogram span {
-  font-family: var(--font-display);
-  font-size: 10rem;
-  font-weight: 600;
-  letter-spacing: -0.08em;
-  line-height: 0.68;
+.resume-monogram img {
+  display: block;
+  width: 52%;
+  height: auto;
+  max-width: 190px;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 2px;
+  box-shadow: 0 0 0 1px rgba(243, 240, 233, 0.18);
+  filter: saturate(0.92) contrast(1.04);
 }
 
 .resume-monogram i {
@@ -3874,8 +3884,8 @@ body.page-about {
     min-height: 160px;
   }
 
-  .resume-monogram span {
-    font-size: 8rem;
+  .resume-monogram img {
+    width: 54%;
   }
 
   .resume-sidebar {

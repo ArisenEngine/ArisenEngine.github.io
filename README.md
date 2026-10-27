@@ -26,6 +26,8 @@ site repository.
 - `assets/css/site.css` — the shared visual system
 - `assets/js/site.js` — navigation, reveal animations, pointer glow, print action
 - `assets/images/arisen-mark.png` — public copy of the editor logo
+- `assets/images/wang-jingwen-avatar.jpg` — avatar used on the homepage introduction
+  teaser and the resume summary card
 - `assets/images/wechat-qr.png` — cropped WeChat contact QR code for the resume page
 - `assets/images/og-cover.png` — 1200×630 social sharing card
 - `assets/wang-jingwen-resume.pdf` — optimized two-page PDF downloaded by the resume button
