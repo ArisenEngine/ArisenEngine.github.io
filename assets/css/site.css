@@ -4590,3 +4590,99 @@ body.page-about {
     color: #333 !important;
   }
 }
+
+/* Resume: lead with the independent engine and the current commercial project. */
+@media screen {
+  .page-about #projects .project-feature-head h3,
+  .page-about #experience .experience-head h3 {
+    font-size: clamp(1.7rem, 2.8vw, 2.15rem);
+  }
+
+  .page-about #projects,
+  .page-about #experience {
+    scroll-margin-top: calc(var(--header-height) + 24px);
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .page-about .resume-main {
+    order: 1;
+  }
+
+  .page-about .resume-sidebar {
+    order: 2;
+  }
+}
+
+@media print {
+  .page-about .resume-sidebar {
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+    margin-bottom: 10pt;
+    break-inside: avoid;
+  }
+
+  .page-about .resume-sidebar > .resume-side-section:first-child {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 16mm;
+    align-content: start;
+    gap: 5pt 8pt;
+  }
+
+  .page-about .resume-sidebar > .resume-side-section:first-child > .resume-label {
+    grid-column: 1 / -1;
+  }
+
+  .page-about .contact-list {
+    margin-top: 0;
+  }
+
+  .page-about .contact-list li {
+    padding: 2pt 0;
+  }
+
+  .page-about .contact-list a {
+    margin-top: 0;
+    font-size: 7.1pt;
+  }
+
+  .page-about .wechat-card {
+    display: block;
+    align-self: center;
+    margin-top: 0;
+  }
+
+  .page-about .wechat-card span {
+    display: none;
+  }
+
+  .page-about #experience {
+    break-inside: avoid;
+  }
+
+  .page-about #career {
+    break-before: page;
+  }
+
+  .page-about #career .experience-head h3 {
+    font-size: 12.5pt;
+  }
+
+  .page-about #career .experience-head p {
+    font-size: 8.2pt;
+  }
+
+  .page-about #career .experience-list p,
+  .page-about #career .experience-summary {
+    font-size: 9pt;
+    line-height: 1.65;
+  }
+
+  .page-about #career .experience-list li {
+    padding: 5.5pt 0;
+  }
+
+  .page-about #career .experience-item + .experience-item {
+    margin-top: 10pt;
+    padding-top: 9pt;
+  }
+}

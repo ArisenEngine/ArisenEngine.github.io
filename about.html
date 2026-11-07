@@ -6,20 +6,22 @@
   <meta name="color-scheme" content="light">
   <meta name="theme-color" content="#0a0a09">
   <title>王靖文 — 实时渲染 / 引擎架构 | Arisen Engine</title>
-  <meta name="description" content="王靖文的个人简历：十年游戏与图形开发经验，专注实时渲染、Unity 引擎源码、渲染管线与跨平台图形开发。">
+  <meta name="description" content="王靖文的个人简历：Arisen Engine 独立开发者，专注引擎架构、并行渲染与可验证的 AI 辅助研发；在《失控进化》从事 Unity 源码与跨平台图形开发。">
   <meta name="author" content="王靖文">
   <link rel="canonical" href="https://arisenengine.github.io/about.html">
   <meta property="og:type" content="profile">
   <meta property="og:locale" content="zh_CN">
   <meta property="og:title" content="王靖文 — 实时渲染 / 引擎架构">
-  <meta property="og:description" content="十年游戏与图形开发经验，专注实时渲染、Unity 引擎源码与跨平台图形。">
+  <meta property="og:description" content="Arisen Engine 独立开发者，《失控进化》引擎 / 图形开发。并行渲染、GPU 资源管理与 AI 研发工作流。">
   <meta property="og:url" content="https://arisenengine.github.io/about.html">
   <meta property="og:image" content="https://arisenengine.github.io/assets/images/og-cover.png">
   <meta property="og:image:alt" content="王靖文 — 实时渲染与引擎开发个人简历">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" type="image/png" href="assets/images/arisen-mark.png">
   <link rel="stylesheet" href="assets/css/site.css">
+  <link rel="stylesheet" href="assets/css/resume-print.css" media="print">
   <script src="assets/js/site.js" defer></script>
+  <script src="assets/js/resume-print.js" defer></script>
 </head>
 <body class="page-about">
   <a class="skip-link" href="#main">跳到主要内容</a>
@@ -55,7 +57,7 @@
   </header>
 
   <main id="main">
-    <section class="resume-hero">
+    <section class="resume-hero" id="profile">
       <div class="shell">
         <div class="resume-hero-grid">
           <div class="resume-hero-copy">
@@ -64,12 +66,12 @@
               JINGWEN WANG <span class="eyebrow-sep">/</span> RESUME 2026
             </p>
             <h1 class="reveal">王靖文<span class="accent-text">.</span></h1>
-            <p class="resume-role reveal">实时渲染 <span>/</span> 引擎源码 <span>/</span> 跨平台图形</p>
+            <p class="resume-role reveal">引擎架构 <span>/</span> 实时渲染 <span>/</span> Unity 源码</p>
             <p class="resume-intro reveal">
-              十年游戏和图形开发经验，最近五年主要做 <strong>Unity 渲染</strong> 与
-              <strong>引擎源码定制</strong>。做过 PC、Android、iOS 和 OpenHarmony 的商业项目，
-              参与渲染管线、<strong>GPU 资源同步</strong>、性能优化与线上故障定位。
-              希望继续做渲染引擎与底层架构，把实时图形和跨平台经验用到更复杂的产品里。
+              独立设计并开发 <strong>Arisen Engine</strong>，以 C++23、Vulkan 与 C#
+              构建包驱动架构、并行渲染和编辑器，结合<strong>AI 工具</strong>开展研发与验证。
+              现于无端科技<strong>《失控进化》</strong>从事 Unity 源码与图形开发，
+              重点投入<strong>三线程渲染、GPU 蒙皮网格合并</strong>和跨平台优化。十年开发经验。
             </p>
             <div class="resume-actions reveal">
               <a class="button button--ink" href="assets/wang-jingwen-resume.pdf" download="王靖文-实时渲染-引擎架构.pdf" type="application/pdf">
@@ -91,10 +93,10 @@
               <i>REAL-TIME<br>RENDERING<br>ENGINE</i>
             </div>
             <dl class="resume-card-facts">
-              <div><dt>EXPERIENCE</dt><dd>10 年</dd></div>
-              <div><dt>CURRENT</dt><dd>无端科技</dd></div>
+              <div><dt>SELF-BUILT</dt><dd>Arisen Engine</dd></div>
+              <div><dt>CURRENT</dt><dd>无端科技 · 失控进化</dd></div>
               <div><dt>CORE</dt><dd>C++ / Vulkan / SRP</dd></div>
-              <div><dt>FOCUS</dt><dd>引擎渲染 / 架构</dd></div>
+              <div><dt>EXPERIENCE</dt><dd>10 年</dd></div>
             </dl>
             <p class="resume-card-note">RENDERING ENGINE / ENGINE ARCHITECTURE</p>
           </aside>
@@ -139,7 +141,8 @@
                 <span>Render Pipeline</span>
                 <span>Engine Source</span>
                 <span>GPU Debugging</span>
-                <span>Interaction UI</span>
+                <span>Graphics Tooling</span>
+                <span>AI-assisted Development</span>
                 <span>Cross-platform</span>
               </div>
             </section>
@@ -147,63 +150,26 @@
             <section class="resume-side-section reveal">
               <p class="resume-label">TOOLBOX / 工具</p>
               <dl class="skill-list">
-                <div><dt>LANGUAGES</dt><dd>C++ · C# · HLSL · GLSL · TypeScript</dd></div>
+                <div><dt>LANGUAGES</dt><dd>C++ · C# · Python · HLSL · GLSL · TypeScript</dd></div>
                 <div><dt>GRAPHICS</dt><dd>Vulkan · D3D12 · OpenGL ES · Compute Shader</dd></div>
                 <div><dt>ENGINE</dt><dd>Unity SRP/URP · RenderGraph · Frame Debugger</dd></div>
-                <div><dt>PROFILING</dt><dd>RenderDoc · Mali Offline Compiler · Unity Profiler · UWA</dd></div>
+                <div><dt>PROFILING</dt><dd>RenderDoc · Unity Profiler · Perfetto · UWA · Mali Offline Compiler</dd></div>
                 <div><dt>PLATFORM</dt><dd>Windows · Android · iOS · OpenHarmony · macOS Editor</dd></div>
                 <div><dt>BUILD</dt><dd>CMake · MSBuild · .NET · Git</dd></div>
+                <div><dt>WORKFLOW</dt><dd>Codex · MCP · Skills · GitHub Actions</dd></div>
               </dl>
             </section>
 
             <div class="resume-side-note reveal">
               <span>OPEN TO</span>
-              <p>渲染引擎、引擎架构与实时图形方向。完整项目细节与作品演示可在面试中沟通。</p>
+              <p>渲染引擎与图形架构方向。可提供 Arisen Engine 演示，交流源码设计、多线程渲染与 GPU 优化。</p>
             </div>
           </aside>
 
           <div class="resume-main">
-            <section class="resume-section reveal" id="profile">
-              <div class="resume-section-head">
-                <span>01</span>
-                <h2>简介</h2>
-                <i>PROFILE</i>
-              </div>
-              <div class="profile-copy">
-                <p class="profile-lead">
-                  从游戏效果、渲染管线，到 <strong>Unity Runtime</strong> 的源码修改。
-                  我的工作主要围绕实时画面、性能和多平台稳定性展开。
-                </p>
-                <p>
-                  早期做 CocosCreator 与 Laya 游戏客户端，2021 年起转向实时渲染。
-                  目前在无端参与大型开放世界项目的 Unity 引擎源码和自定义 SRP 维护，
-                  负责多线程渲染、GPU 资源路径、调试工具与跨平台问题。熟悉把效果需求拆成
-                  Pass、资源和同步问题，也愿意补工具与流程，让性能和稳定性可以持续验证。
-                </p>
-              </div>
-
-              <div class="profile-highlights">
-                <div>
-                  <span>01</span>
-                  <strong>引擎底层</strong>
-                    <p>在 <strong>Unity Runtime</strong> 中实现 <strong>GPU MeshCombine</strong>、SRP Threaded 抓帧和 Vulkan 视频资源路径。</p>
-                </div>
-                <div>
-                  <span>02</span>
-                  <strong>渲染管线与并发</strong>
-                    <p>维护自定义 SRP，推进管线<strong>全面三线程化</strong>，把发起、数据准备、提交与收尾放到 SRP 线程，并处理天空、后效、GTAO 等 Pass 的同步与画质分级。</p>
-                </div>
-                <div>
-                  <span>03</span>
-                  <strong>商业项目交付</strong>
-                  <p>覆盖 PC、Android、iOS、OpenHarmony 与海外版本，和策划、美术、QA、平台团队长期协作。</p>
-                </div>
-              </div>
-            </section>
-
             <section class="resume-section reveal" id="projects">
               <div class="resume-section-head">
-                <span>02</span>
+                <span>01</span>
                 <h2>自研引擎</h2>
                 <i>SELF-BUILT ENGINE</i>
               </div>
@@ -211,22 +177,34 @@
                 <div class="project-feature-head">
                   <div>
                     <h3>Arisen Engine</h3>
-                    <p>个人项目 / 引擎架构与实时渲染</p>
+                    <p>个人自研 / 引擎架构、渲染与 AI 研发工具链</p>
                   </div>
                   <span>2023.11 — 至今</span>
                 </div>
                 <ul class="experience-list">
                   <li>
                     <span>01</span>
-                    <p>用 <strong>C++23</strong>、Vulkan 和 C# 搭建包驱动微内核、ECS、TaskGraph、RenderGraph 与 <strong>Vulkan RHI</strong>。</p>
+                    <p><strong>架构与数据导向设计：</strong>基于 <strong>C++23、Vulkan 与 C#</strong> 实现包驱动微内核、ECS 与共享 TaskGraph，采用批处理和复用存储，明确模块依赖与托管 / 原生边界。</p>
                   </li>
                   <li>
                     <span>02</span>
-                    <p>实现资源提交、呈现和按<strong>提交票号</strong>延迟释放，在 Avalonia 中承载编辑器与双视口，并维护独立运行时与编辑器两条渲染路径。</p>
+                    <p><strong>并行渲染与 GPU 同步：</strong>实现独立渲染线程、帧数据快照与 <strong>RenderGraph 并行命令录制</strong>，组织异步 Buffer / 纹理上传、批量提交和按 GPU 完成状态延迟释放。</p>
                   </li>
                   <li>
                     <span>03</span>
-                    <p>用自动化门禁验证包图、运行时启动、GPU 资源所有权和编辑器渲染，持续整理架构文档。</p>
+                    <p><strong>资产与大场景：</strong>实现导入、烘焙和<strong>资源驻留</strong>，支持世界 / 地形 / 植被流送、视锥剔除与 LOD；部署版读取烘焙资产，与编辑器源资源隔离。</p>
+                  </li>
+                  <li>
+                    <span>04</span>
+                    <p><strong>编辑器与诊断：</strong>开发 <strong>Avalonia 双视口</strong>、场景 / 材质编辑及撤销重做，接入 Tracy、RenderDoc，配套保存重开、GPU 资源回收与静默场景验证。</p>
+                  </li>
+                  <li>
+                    <span>05</span>
+                    <p><strong>AI 辅助研发：</strong>以 <strong>AGENTS.md、架构文档和 Skills</strong> 组织 Codex 上下文，拆分有边界的实现与评审任务；用测试和真实运行证据验收，架构决策与最终评审由本人负责。</p>
+                  </li>
+                  <li>
+                    <span>06</span>
+                    <p><strong>MCP 与资产自动化：</strong>编写 <strong>Python 任务 Harness</strong>，连接 Blender MCP 与 GitHub Actions；在独立 worktree 执行，校验写入范围和产物，记录验证结果，候选经人工评审后合入。</p>
                   </li>
                 </ul>
                 <div class="project-links">
@@ -238,39 +216,54 @@
 
             <section class="resume-section reveal" id="experience">
               <div class="resume-section-head">
-                <span>03</span>
-                <h2>工作经历</h2>
-                <i>EXPERIENCE</i>
+                <span>02</span>
+                <h2>商业项目</h2>
+                <i>COMMERCIAL PROJECT</i>
               </div>
 
               <article class="experience-item">
                 <div class="experience-head">
                   <div>
-                    <h3>无端科技</h3>
-                    <p>引擎 / 图形开发 · 项目 <strong>《失控进化》</strong></p>
+                    <h3>《失控进化》</h3>
+                    <p><strong>无端科技</strong> · 引擎 / 图形开发 · 开放世界项目</p>
                   </div>
                   <span class="experience-time">2024.11 — 至今</span>
                 </div>
                 <ul class="experience-list">
                   <li>
                     <span>01</span>
-                    <p>维护大型开放世界项目的 Unity 引擎源码与自定义 SRP，推进渲染管线<strong>全面三线程化</strong>：管线发起、Pass 数据准备、提交与收尾都放到 <strong>SRP 线程</strong>执行，减少主线程阻塞，并适配 SceneView、CameraOverlay、Preview 等编辑器渲染路径。</p>
+                    <p><strong>三线程渲染：</strong>承担自定义 SRP 关键模块的线程迁移与性能优化，覆盖天空、后处理、GTAO、Light Cookie 和 GPU Buffer 上传，推进渲染准备与主线程解耦。</p>
                   </li>
                   <li>
                     <span>02</span>
-                    <p>为 <strong>Frame Debugger</strong> 增加 SRP Threaded 抓帧能力，处理临时 RT、Native RenderPass、后效重绘和远程调试数据；在 Unity Runtime 中实现 <strong>GPU MeshCombine</strong>，补齐 compute shader、资源回收与 Android 适配。</p>
+                    <p><strong>GPU 网格合并：</strong>开发 Unity Runtime 的 <strong>GPU MeshCombine</strong>，将顶点拷贝与格式转换交给 Compute Shader，接入模块化角色装配与蒙皮，完善骨骼索引、动态包围盒和材质同步。</p>
                   </li>
                   <li>
                     <span>03</span>
-                    <p>打通 <strong>OpenHarmony</strong> 视频播放的 <strong>Vulkan CPU/Native Buffer</strong> 路径，处理非标准尺寸、旋转镜像、VkFence 与资源生命周期问题；参与鸿蒙超分和画质切换接入。</p>
+                    <p><strong>图形调试与编辑器：</strong>扩展 <strong>Frame Debugger 的 SRP 线程抓帧</strong>，支持临时 RT、Native RenderPass 和远程事件查看；完成 SceneView、选中描边、Gizmo 及模型 / 相机预览的多线程适配。</p>
                   </li>
                   <li>
                     <span>04</span>
-                    <p>覆盖 <strong>Windows/Vulkan</strong>、D3D12、GLES 与 Android/iOS/OpenHarmony/macOS Editor 构建；定位黑屏、闪烁、花屏和崩溃问题，配合策划、美术、QA 与平台团队完成版本交付。</p>
+                    <p><strong>跨平台图形：</strong>完善 Android 视频解码与 <strong>Vulkan 资源同步</strong>，实现 <strong>OpenHarmony CPU / Native Buffer</strong> 视频播放路径，处理多设备黑屏、花屏、同步与资源生命周期问题。</p>
+                  </li>
+                  <li>
+                    <span>05</span>
+                    <p><strong>画面与画质：</strong>开发接触阴影，优化大气、体积云与光散射，完成相关效果的管线迁移；完善 PC / 移动端画质分级与鸿蒙超分接入，处理 Vulkan、D3D12、GLES 的格式与显存差异。</p>
+                  </li>
+                  <li>
+                    <span>06</span>
+                    <p><strong>图形回归工具：</strong>开发跨设备画面对比与兼容性测试工具，整合截图、连续帧采集、对比报告和自动打包，支持渲染、视频、资源下载及登录流程的重复测试。</p>
                   </li>
                 </ul>
               </article>
+            </section>
 
+            <section class="resume-section reveal" id="career">
+              <div class="resume-section-head">
+                <span>03</span>
+                <h2>过往经历</h2>
+                <i>CAREER</i>
+              </div>
               <article class="experience-item">
                 <div class="experience-head">
                   <div>
@@ -282,15 +275,15 @@
                 <ul class="experience-list">
                   <li>
                     <span>01</span>
-                    <p>负责开放世界 MMORPG 的水体交互、角色自阴影与玉石材质：用<strong>波动方程</strong>实现水面交互，基于自适应投射包围盒和 <strong>ShadowAtlas</strong> 完成逐角色投影。</p>
+                    <p>负责水体交互、角色自阴影与玉石材质。用<strong>波动方程</strong>模拟水面扰动，根据角色包围盒分配 <strong>ShadowAtlas</strong>，实现逐角色阴影。</p>
                   </li>
                   <li>
                     <span>02</span>
-                    <p>实现预积分 SSS 与 Wrapped Lighting；使用 <strong>Mali Offline Compiler</strong> 优化 Shader 分支、精度和指令数。</p>
+                    <p>使用预积分 SSS 与 Wrapped Lighting 表现玉石的透光感；通过 <strong>Mali Offline Compiler</strong> 检查并优化 Shader 分支、精度和指令数。</p>
                   </li>
                   <li>
                     <span>03</span>
-                    <p>开发公告板树烘焙、样条路径布点和贴图导入工具，整理体积雾、自阴影、APV 与 Shader 优化文档。</p>
+                    <p>为美术开发公告板树烘焙、样条布点和贴图导入工具，编写体积雾、自阴影、APV 与 Shader 优化的使用说明。</p>
                   </li>
                 </ul>
               </article>
@@ -306,15 +299,15 @@
                 <ul class="experience-list">
                   <li>
                     <span>01</span>
-                    <p>基于 Unity Core RP 与 <strong>RenderGraph</strong> 独立完成可编程渲染管线，使用 <strong>GraphView</strong> 开发节点式编辑器，用数据描述 Pass 和资源。</p>
+                    <p>基于 Unity Core RP 与 <strong>RenderGraph</strong> 独立开发自定义渲染管线。使用 <strong>GraphView</strong> 制作节点编辑器，可视化配置 Pass、资源与执行依赖。</p>
                   </li>
                   <li>
                     <span>02</span>
-                    <p>修改 <strong>URP</strong>，实现 UI 渲染分辨率分离、反射相机和 RenderFeature；完成 G 波水体、玻璃折射、预烘焙体积云、SDF 特效与 UI 模糊。</p>
+                    <p>在 <strong>URP</strong> 中分离 UI 与场景渲染分辨率，接入反射相机和自定义 RenderFeature。开发 G 波水体、玻璃折射、预烘焙体积云、SDF 特效与 UI 模糊。</p>
                   </li>
                   <li>
                     <span>03</span>
-                    <p>开发可视化管线编辑、SDF 生成和 AO 烘焙导出工具。管线与效果演示发布在 Bilibili。</p>
+                    <p>制作 SDF 生成、AO 烘焙与导出工具。</p>
                   </li>
                 </ul>
               </article>
@@ -327,7 +320,7 @@
                   </div>
                   <span class="experience-time">2019.06 — 2021.11</span>
                 </div>
-                <p class="experience-summary">负责 <strong>CocosCreator</strong> 小游戏客户端框架、构建管线和全部小游戏开发，维护发版流程。</p>
+                <p class="experience-summary">担任 <strong>CocosCreator</strong> 主程，负责小游戏客户端框架、玩法开发，以及构建和发版工具。</p>
               </article>
 
               <div class="early-history">
@@ -403,5 +396,46 @@
       <span>ZH-CN</span>
     </div>
   </footer>
+
+  <template id="resume-print-layout">
+    <article id="resume-print-document" hidden aria-label="王靖文的项目重点简历">
+      <section class="pdf-page pdf-page--projects" aria-label="重点项目">
+        <header class="pdf-header">
+          <div class="pdf-name-row">
+            <div data-print-source=".resume-hero-copy h1"></div>
+            <p class="pdf-english-name" data-print-name></p>
+          </div>
+          <div class="pdf-role" data-print-source=".resume-role"></div>
+          <div class="pdf-primary-contact">
+            <div data-print-source=".contact-list li:nth-child(1) a"></div>
+            <div data-print-source=".contact-list li:nth-child(2) a"></div>
+          </div>
+          <div class="pdf-summary" data-print-source=".resume-intro"></div>
+        </header>
+        <div class="pdf-project" data-print-source="#projects"></div>
+        <div class="pdf-project" data-print-source="#experience"></div>
+      </section>
+      <section class="pdf-page pdf-page--career" aria-label="履历与技术栈">
+        <div class="pdf-career" data-print-source="#career"></div>
+        <div class="pdf-education" data-print-source="#education"></div>
+        <section class="pdf-skills">
+          <h2>技术栈</h2>
+          <div data-print-source=".skill-list"></div>
+        </section>
+        <section class="pdf-contact-section">
+          <h2>作品与联系</h2>
+          <div class="pdf-contact-grid">
+            <div class="pdf-secondary-contact">
+              <div data-print-source=".contact-list li:nth-child(1)"></div>
+              <div data-print-source=".contact-list li:nth-child(2)"></div>
+              <div data-print-source=".contact-list li:nth-child(3)"></div>
+              <div data-print-source=".contact-list li:nth-child(4)"></div>
+            </div>
+            <div class="pdf-wechat" data-print-source=".wechat-card"></div>
+          </div>
+        </section>
+      </section>
+    </article>
+  </template>
 </body>
 </html>

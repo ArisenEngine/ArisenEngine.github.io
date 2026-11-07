@@ -1,0 +1,369 @@
+/* Print-only project-led resume. Content is copied from about.html, not authored twice. */
+@page {
+  size: A4;
+  margin: 13mm 16mm 14mm;
+
+  @top-left {
+    content: "王靖文  /  引擎架构与实时渲染";
+    color: #73787e;
+    font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    font-size: 8pt;
+  }
+  @top-right {
+    content: "";
+  }
+  @bottom-left {
+    content: "ARISEN ENGINE  /  JINGWEN WANG";
+    color: #73787e;
+    font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    font-size: 7.5pt;
+  }
+  @bottom-right {
+    content: counter(page) " / " counter(pages);
+    color: #73787e;
+    font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    font-size: 8pt;
+  }
+}
+@page:first {
+  @top-left {
+    content: "";
+  }
+}
+
+html,
+body.page-about {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  background: #fff !important;
+}
+body.page-about.resume-print-ready > main,
+body.page-about.resume-print-ready > header,
+body.page-about.resume-print-ready > footer,
+body.page-about.resume-print-ready > .skip-link {
+  display: none !important;
+}
+
+#resume-print-document {
+  --pdf-ink: #25282c;
+  --pdf-muted: #626971;
+  --pdf-accent: #a9482c;
+  --pdf-rule: #d9dde1;
+  display: block !important;
+  width: 100%;
+  color: var(--pdf-ink) !important;
+  background: #fff !important;
+  font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-size: 10pt;
+  line-height: 1.6;
+  print-color-adjust: exact;
+  -webkit-print-color-adjust: exact;
+}
+#resume-print-document *,
+#resume-print-document *::before,
+#resume-print-document *::after {
+  color: inherit !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  font-family: inherit;
+  letter-spacing: normal;
+}
+#resume-print-document p {
+  margin: 0;
+}
+#resume-print-document a {
+  color: var(--pdf-muted) !important;
+  text-decoration: none;
+}
+#resume-print-document strong {
+  color: var(--pdf-ink) !important;
+  font-weight: 700;
+}
+#resume-print-document .pdf-page--career {
+  break-before: page;
+}
+#resume-print-document .pdf-name-row {
+  display: flex;
+  align-items: baseline;
+  gap: 16pt;
+  padding-left: 11pt;
+  border-left: 3pt solid var(--pdf-accent);
+}
+#resume-print-document .pdf-name-row h1 {
+  margin: 0;
+  font-size: 29pt;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.035em;
+}
+#resume-print-document .pdf-english-name {
+  color: var(--pdf-muted) !important;
+  font-size: 9pt;
+  letter-spacing: 0.08em;
+}
+#resume-print-document .pdf-role {
+  margin: 7pt 0 0 14pt;
+}
+#resume-print-document .resume-role {
+  margin: 0;
+  color: var(--pdf-accent) !important;
+  font-size: 11pt;
+  font-weight: 600;
+  line-height: 1.4;
+}
+#resume-print-document .resume-role span {
+  margin: 0 5pt;
+}
+#resume-print-document .pdf-primary-contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6pt 18pt;
+  margin-top: 11pt;
+  font-size: 8.5pt;
+}
+#resume-print-document .pdf-summary {
+  margin-top: 13pt;
+  padding-top: 10pt;
+  border-top: 1px solid var(--pdf-rule);
+}
+#resume-print-document .resume-intro {
+  max-width: none;
+  margin: 0;
+  font-size: 9.5pt;
+  line-height: 1.65;
+}
+#resume-print-document .pdf-project {
+  margin-top: 11pt;
+}
+#resume-print-document .resume-section {
+  margin: 0;
+  break-inside: auto;
+}
+#resume-print-document .resume-section-head,
+#resume-print-document .pdf-skills > h2,
+#resume-print-document .pdf-contact-section > h2 {
+  display: flex;
+  align-items: center;
+  gap: 10pt;
+  margin: 0 0 10pt;
+  padding: 0;
+  border: 0 !important;
+  color: var(--pdf-accent) !important;
+  break-after: avoid;
+}
+#resume-print-document .resume-section-head::after,
+#resume-print-document .pdf-skills > h2::after,
+#resume-print-document .pdf-contact-section > h2::after {
+  flex: 1;
+  height: 1px;
+  background: var(--pdf-rule) !important;
+  content: "";
+}
+#resume-print-document .resume-section-head > span,
+#resume-print-document .resume-section-head > i {
+  display: none;
+}
+#resume-print-document .resume-section-head h2,
+#resume-print-document .pdf-skills > h2,
+#resume-print-document .pdf-contact-section > h2 {
+  font-size: 12pt;
+  font-weight: 700;
+  line-height: 1.4;
+}
+#resume-print-document .project-feature,
+#resume-print-document .experience-item {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  break-inside: avoid;
+}
+#resume-print-document .project-feature-head,
+#resume-print-document .experience-head,
+#resume-print-document .education-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 20pt;
+}
+#resume-print-document .project-feature-head h3,
+#resume-print-document .experience-head h3,
+#resume-print-document .education-row h3 {
+  font-size: 13.5pt;
+  font-weight: 700;
+  line-height: 1.4;
+}
+#resume-print-document .project-feature-head p,
+#resume-print-document .experience-head p,
+#resume-print-document .education-row p {
+  margin-top: 3pt;
+  color: var(--pdf-muted) !important;
+  font-size: 8.5pt;
+  line-height: 1.5;
+}
+#resume-print-document .project-feature-head > span,
+#resume-print-document .experience-time,
+#resume-print-document .education-row > span {
+  margin: 0;
+  padding: 0;
+  color: var(--pdf-muted) !important;
+  font-size: 8.5pt;
+  line-height: 1.5;
+  white-space: nowrap;
+}
+#resume-print-document .experience-list {
+  margin: 8pt 0 0;
+  padding: 0 0 0 11pt;
+  border: 0;
+  list-style: disc outside;
+}
+#resume-print-document .experience-list li {
+  display: list-item;
+  margin: 0 0 4pt;
+  padding: 0 0 0 2pt;
+  border: 0;
+  break-inside: avoid;
+}
+#resume-print-document .experience-list li > span {
+  display: none;
+}
+#resume-print-document .experience-list p,
+#resume-print-document .experience-summary {
+  margin: 0;
+  padding: 0;
+  font-size: 10pt;
+  line-height: 1.6;
+}
+#resume-print-document .project-links {
+  margin: 7pt 0 0;
+  padding: 0;
+  gap: 16pt;
+}
+#resume-print-document .project-links a {
+  border: 0;
+  font-size: 8pt;
+}
+#resume-print-document .pdf-career .experience-item + .experience-item {
+  margin-top: 13pt;
+  padding: 0;
+  border: 0;
+}
+#resume-print-document .pdf-career .experience-head > div {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 2pt 10pt;
+}
+#resume-print-document .pdf-career .experience-head p {
+  margin-top: 0;
+}
+#resume-print-document .experience-summary {
+  margin-top: 7pt;
+}
+#resume-print-document .early-history {
+  margin-top: 11pt;
+  padding-top: 8pt;
+  border-top: 1px solid var(--pdf-rule);
+}
+#resume-print-document .resume-label {
+  color: var(--pdf-muted) !important;
+  font-size: 8pt;
+  font-weight: 600;
+}
+#resume-print-document .early-row {
+  gap: 20pt;
+  padding: 4pt 0;
+  border: 0;
+}
+#resume-print-document .early-row strong {
+  font-size: 9.5pt;
+}
+#resume-print-document .early-row span,
+#resume-print-document .early-row time {
+  color: var(--pdf-muted) !important;
+  font-size: 8.5pt;
+}
+#resume-print-document .pdf-education,
+#resume-print-document .pdf-skills,
+#resume-print-document .pdf-contact-section {
+  margin-top: 11pt;
+  break-inside: avoid;
+}
+#resume-print-document .pdf-contact-section {
+  padding-top: 10pt;
+  border-top: 1px solid var(--pdf-rule);
+}
+#resume-print-document .pdf-contact-section > h2 {
+  display: none;
+}
+#resume-print-document .education-row {
+  padding: 0;
+}
+#resume-print-document .skill-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6pt 22pt;
+  margin: 0;
+}
+#resume-print-document .skill-list div {
+  padding: 0;
+  border: 0;
+}
+#resume-print-document .skill-list dt {
+  color: var(--pdf-ink) !important;
+  font-size: 8.5pt;
+  font-weight: 700;
+}
+#resume-print-document .skill-list dd {
+  margin-top: 2pt;
+  color: var(--pdf-muted) !important;
+  font-size: 9pt;
+  line-height: 1.5;
+}
+#resume-print-document .pdf-contact-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 42mm;
+  align-items: center;
+  gap: 18pt;
+}
+#resume-print-document .pdf-secondary-contact {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6pt 16pt;
+}
+#resume-print-document .pdf-secondary-contact li {
+  list-style: none;
+}
+#resume-print-document .pdf-secondary-contact li > span {
+  display: block;
+  color: var(--pdf-muted) !important;
+  font-size: 7.5pt;
+  font-weight: 600;
+}
+#resume-print-document .pdf-secondary-contact a {
+  font-size: 8.5pt;
+  overflow-wrap: anywhere;
+}
+#resume-print-document .wechat-card {
+  display: flex;
+  align-items: center;
+  gap: 8pt;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+#resume-print-document .wechat-card img {
+  width: 19mm;
+  height: 19mm;
+  border: 0;
+}
+#resume-print-document .wechat-card span {
+  display: flex;
+  flex-direction: column;
+  gap: 3pt;
+}
+#resume-print-document .wechat-card strong,
+#resume-print-document .wechat-card small {
+  font-size: 8pt;
+  line-height: 1.5;
+}
