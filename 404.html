@@ -3,7 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
   <meta name="theme-color" content="#0a0a09">
+  <meta name="robots" content="noindex, follow">
+  <link rel="icon" type="image/png" href="/assets/images/arisen-mark.png">
   <title>页面未找到 — Arisen Engine</title>
   <style>
     :root { color-scheme: dark; }
@@ -20,7 +23,7 @@
       color: #f3f0e9;
       font-family: "Segoe UI Variable Text", "PingFang SC", "Microsoft YaHei", sans-serif;
     }
-    main { width: min(720px, 100%); text-align: center; }
+    main { width: min(680px, 100%); text-align: center; }
     p:first-child {
       margin: 0;
       color: #ff6b3d;
@@ -30,15 +33,15 @@
     h1 {
       margin: 28px 0 0;
       font-family: "Bahnschrift Condensed", "Segoe UI Variable Display", "PingFang SC", sans-serif;
-      font-size: clamp(4rem, 13vw, 9rem);
+      font-size: clamp(2.2rem, 7vw, 4.4rem);
       font-weight: 600;
-      letter-spacing: -.06em;
-      line-height: .9;
+      letter-spacing: -.04em;
+      line-height: 1.2;
     }
     p { margin: 26px auto 0; color: #a4a096; line-height: 1.8; }
     a {
       display: inline-block;
-      margin-top: 32px;
+      margin-top: 0;
       padding: 15px 23px;
       background: #ff6b3d;
       color: #180c08;
@@ -47,14 +50,21 @@
       text-decoration: none;
       letter-spacing: .06em;
     }
+    .actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 32px; }
+    .secondary { border: 1px solid #706e66; background: transparent; color: #f3f0e9; }
+    a:focus-visible { outline: 2px solid #ffb18c; outline-offset: 4px; }
   </style>
 </head>
 <body>
   <main>
     <p>ARISEN ENGINE / 404</p>
-    <h1>这条路径<br>还没有被构建。</h1>
-    <p>你访问的页面不存在，或仍在开发中。</p>
-    <a href="/">返回 Arisen Engine 首页</a>
+    <h1>这条路径，<br>还没有被构建。</h1>
+    <p>页面可能已移动，或尚未发布。<br>可以回到首页看运行结果，或从引擎概览继续了解。</p>
+    <div class="actions">
+      <a href="/">返回首页</a>
+      <a class="secondary" href="/engine.html">引擎概览</a>
+      <a class="secondary" href="/documentation.html">技术文档</a>
+    </div>
   </main>
 </body>
 </html>

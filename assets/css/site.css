@@ -47,7 +47,7 @@ html {
 
 body {
   margin: 0;
-  min-width: 320px;
+  min-width: 0;
   background:
     radial-gradient(circle at 78% 8%, rgba(255, 107, 61, 0.07), transparent 28rem),
     radial-gradient(circle at 4% 38%, rgba(255, 255, 255, 0.025), transparent 26rem),
@@ -3270,6 +3270,7 @@ body.page-about {
     border-bottom: 1px solid var(--line);
     background: var(--ink);
     opacity: 0;
+    visibility: hidden;
     pointer-events: none;
     transform: translateY(-14px);
     transition:
@@ -3279,6 +3280,7 @@ body.page-about {
 
   .nav-open .site-nav {
     opacity: 1;
+    visibility: visible;
     pointer-events: auto;
     transform: translateY(0);
   }
@@ -3291,6 +3293,21 @@ body.page-about {
 
   .site-nav a::after {
     display: none;
+  }
+
+  html:not(.js) .nav-toggle {
+    display: none;
+  }
+
+  html:not(.js) .site-nav {
+    position: static;
+    grid-column: 1 / -1;
+    height: auto;
+    padding: 0 0 18px;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: none;
   }
 
   .hero {
